@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.data
+package com.bskyb.skyrewards.model
 
 data class SRWChannel(
     val imageId: Int,
