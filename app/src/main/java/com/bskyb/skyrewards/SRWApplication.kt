@@ -1,12 +1,18 @@
-package com.bskyb.skyrewards.view.main
+package com.bskyb.skyrewards.view.fragment
 
+import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bskyb.skyrewards.R
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class SRWApplication : Application() {
+    companion object {
+        lateinit var instance: SRWApplication
+            private set
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        instance = this@SRWApplication
     }
 }
