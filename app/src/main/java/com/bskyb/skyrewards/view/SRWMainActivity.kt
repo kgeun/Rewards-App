@@ -9,7 +9,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.bskyb.skyrewards.R
 
-open class SRWMainActivity : AppCompatActivity() {
+open class SRWMainActivity: AppCompatActivity() {
     var statusbarHeight = 0
 
     fun Int.dp2px(context: Context) :Int {

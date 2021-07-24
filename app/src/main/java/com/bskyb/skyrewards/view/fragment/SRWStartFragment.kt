@@ -9,7 +9,7 @@ import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.databinding.FragmentIntroBinding
 import com.nmp.studygeto.analytics.SRWAnalytics
 
-class SRWIntroFragment : Fragment() {
+class SRWStartFragment : Fragment() {
 
     lateinit var binding: FragmentIntroBinding
 
