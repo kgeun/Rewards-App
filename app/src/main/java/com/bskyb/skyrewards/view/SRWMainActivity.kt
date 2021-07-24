@@ -30,7 +30,6 @@ open class SRWMainActivity: AppCompatActivity() {
         return (this * scale).toInt()
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -46,14 +45,6 @@ open class SRWMainActivity: AppCompatActivity() {
             wic.isAppearanceLightStatusBars = true
             WindowCompat.setDecorFitsSystemWindows(window, false)
         }
-
-
-//        navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
-//        navController = navHostFragment.navController
-//        appBarConfiguration = AppBarConfiguration(navController.graph, binding.root.drawerLayout)
-//        binding.root.toolbar.setupWithNavController(navController, appBarConfiguration)
-//        binding.root.navView.setupWithNavController(navController)
-        Log.i("kglee", "onCreateView22")
     }
 
     override fun onStart() {

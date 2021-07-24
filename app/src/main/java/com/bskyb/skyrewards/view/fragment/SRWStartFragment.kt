@@ -5,10 +5,14 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
+import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.FragmentStartBinding
+
 
 class SRWStartFragment : Fragment() {
 
@@ -25,16 +29,13 @@ class SRWStartFragment : Fragment() {
         setListener()
 
         SRWAnalytics.sendView("SRWIntroFragment")
-//        val mapInfo: Map<String, String> = mapOf("농장이름" to farmData.name, "전화번호" to farmData.phone)
-//        SRWAnalytics.sendEvent("SRWIntroFragment", null)
 
         return binding.root
     }
 
     fun setListener() {
-//        binding.root.closeBtn.setOnClickListener {
-//            KFPAnalytics.sendView("FarmInfoClosed")
-//            dismiss()
-//        }
+        binding.nextBtnText.setOnClickListener {
+            findNavController().navigate(R.id.start_to_channel)
+        }
     }
 }
