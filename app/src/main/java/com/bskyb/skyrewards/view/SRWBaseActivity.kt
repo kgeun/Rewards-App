@@ -23,10 +23,9 @@ open class SRWBaseActivity : AppCompatActivity() {
         statusbarHeight = resources.getDimensionPixelSize(R.dimen.statusbar_height)
         val decorView: View = window.decorView
 
-        // Set custom status bar
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
-            decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        // Set transparent status bar
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         } else {
             val wic = WindowInsetsControllerCompat(window, decorView)
             wic.isAppearanceLightStatusBars = true

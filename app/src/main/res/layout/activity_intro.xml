@@ -10,10 +10,12 @@
         android:id="@+id/statusbarView"
         style="@style/StatusBar"
         android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:layout_width="300dp"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:src="@drawable/app_logo_1"
         android:adjustViewBounds="true"
