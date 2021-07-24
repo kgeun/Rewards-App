@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Sky Rewards</string>
+    <string name="app_name_qa">Sky Rewards(QA)</string>
+    <string name="rewardInfoTitle">Royalty Rewards</string>
+    <string name="rewardInfoContent">We have prepared a present for our customers who have loved us for a long time. Please enter simple information and check if you are eligible.</string>
+    <string name="disclaimerText">Disclaimer :\nThis is not an app that actually works and is not in operation with Sky UK Limited. Please be aware that you cannot actually win a prize even if a third party obtained it by accident.</string>
 </resources>
