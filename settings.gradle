@@ -1,0 +1,2 @@
+rootProject.name = "Sky Rewards"
+include ':app'
