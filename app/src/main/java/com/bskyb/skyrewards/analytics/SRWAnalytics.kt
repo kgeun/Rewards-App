@@ -1,7 +1,7 @@
-package com.nmp.studygeto.analytics
+package com.bskyb.skyrewards.analytics
 
 import android.os.Bundle
-import com.bskyb.skyrewards.view.fragment.SRWApplication
+import com.bskyb.skyrewards.SRWApplication
 import com.google.firebase.analytics.FirebaseAnalytics
 
 object SRWAnalytics {
