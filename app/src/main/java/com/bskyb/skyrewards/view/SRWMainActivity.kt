@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.view.main
+package com.bskyb.skyrewards.view.fragment
 
 import android.content.Context
 import android.os.Build
@@ -9,7 +9,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.bskyb.skyrewards.R
 
-open class SRWBaseActivity : AppCompatActivity() {
+open class SRWMainActivity : AppCompatActivity() {
     var statusbarHeight = 0
 
     fun Int.dp2px(context: Context) :Int {
@@ -19,6 +19,7 @@ open class SRWBaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         statusbarHeight = resources.getDimensionPixelSize(R.dimen.statusbar_height)
         val decorView: View = window.decorView

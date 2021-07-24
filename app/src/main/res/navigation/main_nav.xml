@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/introFragment">
+
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.bskyb.skyrewards.view.fragment.SRWIntroFragment"
+        android:label=""
+        tools:layout="@layout/fragment_intro">
+        <action
+            android:id="@+id/main_to_tpdetail"
+            app:destination="@id/main_tpdetail_fragment"
+            app:enterAnim="@null"
+            app:exitAnim="@null"
+            app:popEnterAnim="@null"
+            app:popExitAnim="@null" />
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/historyFragment"-->
+<!--        android:name="com.kgeun.freshpeach.fragments.KFPHistoryFragment"-->
+<!--        android:label=""-->
+<!--        tools:layout="@layout/fragment_history" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/featureFragment"-->
+<!--        android:name="com.kgeun.freshpeach.fragments.KFPFeatureFragment"-->
+<!--        android:label=""-->
+<!--        tools:layout="@layout/fragment_feature" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/farmsListFragment"-->
+<!--        android:name="com.kgeun.freshpeach.fragments.KFPFarmsListFragment"-->
+<!--        android:label=""-->
+<!--        tools:layout="@layout/fragment_farms_list" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/developerInfoFragment"-->
+<!--        android:name="com.kgeun.freshpeach.fragments.KFPDeveloperInfoFragment"-->
+<!--        android:label=""-->
+<!--        tools:layout="@layout/fragment_developer_info" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/instagramFragment"-->
+<!--        android:name="com.kgeun.freshpeach.fragments.KFPInstagramFragment"-->
+<!--        android:label=""-->
+<!--        tools:layout="@layout/fragment_instagram" />-->
+</navigation>
