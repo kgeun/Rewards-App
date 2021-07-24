@@ -11,19 +11,19 @@
         android:label=""
         tools:layout="@layout/fragment_intro">
         <action
-            android:id="@+id/main_to_tpdetail"
-            app:destination="@id/main_tpdetail_fragment"
+            android:id="@+id/intro_to_start"
+            app:destination="@id/startFragment"
             app:enterAnim="@null"
             app:exitAnim="@null"
             app:popEnterAnim="@null"
             app:popExitAnim="@null" />
     </fragment>
 
-<!--    <fragment-->
-<!--        android:id="@+id/historyFragment"-->
-<!--        android:name="com.kgeun.freshpeach.fragments.KFPHistoryFragment"-->
-<!--        android:label=""-->
-<!--        tools:layout="@layout/fragment_history" />-->
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.kgeun.freshpeach.fragments.KFPHistoryFragment"
+        android:label=""
+        tools:layout="@layout/fragment_history" />
 
 <!--    <fragment-->
 <!--        android:id="@+id/featureFragment"-->
