@@ -1,15 +1,28 @@
-package com.bskyb.skyrewards.view.fragment
+package com.bskyb.skyrewards.view
 
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import com.bskyb.skyrewards.R
+import com.bskyb.skyrewards.databinding.ActivityMainBinding
 
 open class SRWMainActivity: AppCompatActivity() {
+
+    val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+
+    lateinit var navController: NavController
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var navHostFragment: NavHostFragment
+
     var statusbarHeight = 0
 
     fun Int.dp2px(context: Context) :Int {
@@ -17,9 +30,10 @@ open class SRWMainActivity: AppCompatActivity() {
         return (this * scale).toInt()
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         statusbarHeight = resources.getDimensionPixelSize(R.dimen.statusbar_height)
         val decorView: View = window.decorView
@@ -32,6 +46,14 @@ open class SRWMainActivity: AppCompatActivity() {
             wic.isAppearanceLightStatusBars = true
             WindowCompat.setDecorFitsSystemWindows(window, false)
         }
+
+
+//        navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+//        navController = navHostFragment.navController
+//        appBarConfiguration = AppBarConfiguration(navController.graph, binding.root.drawerLayout)
+//        binding.root.toolbar.setupWithNavController(navController, appBarConfiguration)
+//        binding.root.navView.setupWithNavController(navController)
+        Log.i("kglee", "onCreateView22")
     }
 
     override fun onStart() {

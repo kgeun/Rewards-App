@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.view.fragment
+package com.bskyb.skyrewards
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
