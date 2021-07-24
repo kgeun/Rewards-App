@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "944498282018",
+    "project_id": "skyrewards-5091a",
+    "storage_bucket": "skyrewards-5091a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944498282018:android:ba8eac8a8c72cb9329047b",
+        "android_client_info": {
+          "package_name": "com.bskyb.skyrewards"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944498282018-u8qdioja8ml0q2u7lihfrvuf6j08598u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD0GgyXNkgEu6BOZ4mzaJlFuxTmsdHR4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944498282018-u8qdioja8ml0q2u7lihfrvuf6j08598u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
