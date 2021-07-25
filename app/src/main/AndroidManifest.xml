@@ -23,9 +23,9 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.SRWRewardsService"
+        <service android:name=".service.rewards_service.SRWRewardsService"
             android:enabled="true"/>
-        <service android:name=".service.SRWEligibilityService"
+        <service android:name=".service.eligibility_service.SRWEligibilityService"
             android:enabled="true"/>
     </application>
 </manifest>
