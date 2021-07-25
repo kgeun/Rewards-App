@@ -2,6 +2,7 @@ package com.bskyb.skyrewards.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bskyb.skyrewards.R
@@ -9,8 +10,7 @@ import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.databinding.ListitemChannelBinding
 import com.bskyb.skyrewards.databinding.ListitemChannelHeaderBinding
 
-class SRWChannelAdapter(val parentView: ViewGroup, val items: List<SRWChannel>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SRWChannelAdapter(val parentView: ViewGroup, val items: List<SRWChannel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val HEADER = 0
     val CONTENT = 1
@@ -46,9 +46,15 @@ class SRWChannelAdapter(val parentView: ViewGroup, val items: List<SRWChannel>) 
         fun bind(item: SRWChannel) {
             binding.apply {
                 channel = item
-                root.setOnClickListener {
-//                    findNavController(it).navigate(R.id.splash_to_start, null, null, FragmentNavigatorExtras(binding.topLogoImg to "app_logo"))
-                    findNavController(it).navigate(R.id.channel_to_account)
+                cardView.isClickable = true
+                cardView.isFocusable = true
+                cardView.setOnClickListener {
+                    val navBuilder = NavOptions.Builder()
+                        .setEnterAnim(R.anim.slide_from_right)
+                        .setExitAnim(R.anim.slide_to_left)
+                        .setPopEnterAnim(R.anim.slide_from_left)
+                        .setPopExitAnim(R.anim.slide_to_right)
+                    findNavController(root).navigate(R.id.channel_to_account, null, navBuilder.build())
                 }
                 executePendingBindings()
             }
