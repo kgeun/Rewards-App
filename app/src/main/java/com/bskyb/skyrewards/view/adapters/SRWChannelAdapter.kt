@@ -2,17 +2,29 @@ package com.bskyb.skyrewards.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bskyb.skyrewards.R
+import com.bskyb.skyrewards.SRWApplication
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.databinding.ListitemChannelBinding
 import com.bskyb.skyrewards.databinding.ListitemChannelHeaderBinding
+import com.bskyb.skyrewards.view.SRWMainViewModel
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.EntryPointAccessors
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Inject
 
-class SRWChannelAdapter(val parentView: ViewGroup, val items: List<SRWChannel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+class SRWChannelAdapter (val parentView: ViewGroup, val items: List<SRWChannel>, val myChannel: MutableLiveData<SRWChannel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val HEADER = 0
     val CONTENT = 1
 
@@ -41,9 +53,10 @@ class SRWChannelAdapter(val parentView: ViewGroup, val items: List<SRWChannel>):
                 CONTENT
     }
 
-    inner class ChannelHolder(
+    inner class ChannelHolder (
         private val binding: ListitemChannelBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: SRWChannel) {
             binding.apply {
                 channel = item
@@ -56,6 +69,8 @@ class SRWChannelAdapter(val parentView: ViewGroup, val items: List<SRWChannel>):
                         .setPopEnterAnim(R.anim.slide_from_left)
                         .setPopExitAnim(R.anim.slide_to_right)
                     findNavController(root).navigate(R.id.channel_to_account, null, navBuilder.build())
+                    myChannel.postValue(item)
+                    Toast.makeText(binding.root.context, "${item.channelTitle} has been selected.", Toast.LENGTH_SHORT).show()
                     SRWAnalytics.sendClick("ChannelBtn_${item.channelType}_${javaClass.simpleName}")
                 }
                 executePendingBindings()
