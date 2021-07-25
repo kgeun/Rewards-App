@@ -35,17 +35,20 @@ class SRWAccountNumberFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAccountNumberBinding.inflate(inflater, container, false)
-        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.no_transition)
-
-        SRWAnalytics.sendView("SRWIntroFragment")
-
         setListener()
 
+        SRWAnalytics.sendView("SRWIntroFragment")
         return binding.root
     }
 
     fun setListener() {
+        binding.backBtnText.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
+        binding.nextBtnText.setOnClickListener {
+            // ToDo
+        }
     }
 
 }
