@@ -1,11 +1,9 @@
 package com.bskyb.skyrewards.view.fragment
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.FragmentChannelBinding

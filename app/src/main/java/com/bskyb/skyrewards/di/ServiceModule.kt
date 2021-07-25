@@ -5,16 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
-import com.bskyb.skyrewards.service.EligibilityService
 import com.bskyb.skyrewards.service.RewardsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ServiceComponent
-import dagger.hilt.android.scopes.ActivityScoped
-import kotlinx.coroutines.*
-import java.lang.Exception
-import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module

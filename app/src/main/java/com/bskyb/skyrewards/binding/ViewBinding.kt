@@ -3,7 +3,6 @@ package com.bskyb.skyrewards.binding
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import com.google.android.material.card.MaterialCardView
 
 object ViewBinding {
     @JvmStatic

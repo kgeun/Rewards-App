@@ -1,7 +1,6 @@
 package com.bskyb.skyrewards.utils
 
 import com.bskyb.skyrewards.data.constant.SRWChannelType
-import com.bskyb.skyrewards.data.constant.SRWEligibilityServiceOutput
 import com.bskyb.skyrewards.data.model.SRWChannel
 
 object SRWConstants {
