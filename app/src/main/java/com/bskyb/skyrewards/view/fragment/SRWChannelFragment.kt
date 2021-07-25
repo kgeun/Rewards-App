@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.analytics.SRWAnalytics
@@ -14,12 +13,7 @@ import com.bskyb.skyrewards.utils.SRWUtils
 import com.bskyb.skyrewards.view.SRWBaseFragment
 import com.bskyb.skyrewards.view.SRWMainViewModel
 import com.bskyb.skyrewards.view.adapters.SRWChannelAdapter
-import dagger.hilt.EntryPoint
-import dagger.hilt.EntryPoints
-import dagger.hilt.InstallIn
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.components.FragmentComponent
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class SRWChannelFragment : SRWBaseFragment() {

@@ -8,20 +8,10 @@ import androidx.navigation.NavOptions
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bskyb.skyrewards.R
-import com.bskyb.skyrewards.SRWApplication
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.databinding.ListitemChannelBinding
 import com.bskyb.skyrewards.databinding.ListitemChannelHeaderBinding
-import com.bskyb.skyrewards.view.SRWMainViewModel
-import dagger.hilt.EntryPoint
-import dagger.hilt.InstallIn
-import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.EntryPointAccessors
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.components.FragmentComponent
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Inject
 
 
 class SRWChannelAdapter (val parentView: ViewGroup, val items: List<SRWChannel>, val myChannel: MutableLiveData<SRWChannel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
