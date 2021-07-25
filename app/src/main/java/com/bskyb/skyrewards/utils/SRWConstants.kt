@@ -5,6 +5,7 @@ import com.bskyb.skyrewards.data.constant.SRWEligibilityServiceOutput
 import com.bskyb.skyrewards.data.model.SRWChannel
 
 object SRWConstants {
+    val ANIM_DURATION: Long = 800
     val channelList = arrayOf<SRWChannel>(
         SRWChannel(
             SRWChannelType.SPORTS,
