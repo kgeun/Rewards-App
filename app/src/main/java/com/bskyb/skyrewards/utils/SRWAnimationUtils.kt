@@ -3,9 +3,8 @@ package com.bskyb.skyrewards.utils
 import android.content.Context
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import com.bskyb.skyrewards.R
 
-object SRWAnimations {
+object SRWAnimationUtils {
     fun getAnim400(animation: Int, context: Context): Animation {
         val ani400: Animation = AnimationUtils.loadAnimation(
             context,
