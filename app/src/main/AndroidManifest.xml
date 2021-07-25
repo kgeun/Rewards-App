@@ -22,5 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".service.SRWRewardsService"
+            android:enabled="true"/>
+        <service android:name=".service.SRWEligibilityService"
+            android:enabled="true"/>
     </application>
 </manifest>

@@ -4,24 +4,23 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.transition.TransitionInflater
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.FragmentStartBinding
+import com.bskyb.skyrewards.service.SRWEligibilityService
 import com.bskyb.skyrewards.utils.SRWAnimationUtils
 import com.bskyb.skyrewards.view.SRWBaseFragment
 
 
 class SRWStartFragment : SRWBaseFragment() {
     private lateinit var binding: FragmentStartBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,8 +33,6 @@ class SRWStartFragment : SRWBaseFragment() {
 
         setListener()
         setAnim()
-
-        SRWAnalytics.sendView("SRWIntroFragment")
         return binding.root
     }
 

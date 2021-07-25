@@ -7,4 +7,6 @@
     <string name="select_channel_message">Please select the channel you are currently subscribing to.</string>
     <string name="account_number_description">Please enter the account number of the Sky TV account you are subscribing to. (* It consists of 12 digits.)</string>
     <string name="account_number_hint">************</string>
+    <string name="rewards_service_online">RewardsService is online.</string>
+    <string name="rewards_service_offline">RewardsService is offline.</string>
 </resources>

@@ -9,13 +9,14 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.ActivityMainBinding
-import com.bskyb.skyrewards.service.SRWServiceHelper
+import com.bskyb.skyrewards.service.SRWRewardsService
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 open class SRWMainActivity: AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private var statusbarHeight = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +29,12 @@ open class SRWMainActivity: AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         initStatusBarPadding()
-        SRWServiceHelper.startServices(this)
+        SRWRewardsService.Helper.bindService(this)
     }
 
     override fun onStop() {
         super.onStop()
-        SRWServiceHelper.stopServices(this)
+        SRWRewardsService.Helper.stopService(this)
     }
 
     private fun setTransparentStatusBar() {

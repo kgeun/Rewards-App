@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
-import com.bskyb.skyrewards.service.RewardsService
+import com.bskyb.skyrewards.service.SRWRewardsService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ServiceComponent::class)
-object ServiceModule {
+object SRWServiceModule {
     var mRewardBound = false
     var mEligibilityBound = false
 
@@ -24,14 +24,14 @@ object ServiceModule {
 
     @Provides
     @Singleton
-    fun provideRewardsService(context: Context): RewardsService {
-        lateinit var mRewardsService: RewardsService
+    fun provideRewardsService(context: Context): SRWRewardsService {
+        lateinit var mRewardsService: SRWRewardsService
 
         var flag = NOT_SET_YET
-        context.bindService(Intent(context, RewardsService::class.java), object : ServiceConnection {
+        context.bindService(Intent(context, SRWRewardsService::class.java), object : ServiceConnection {
                 override fun onServiceConnected(className: ComponentName, service: IBinder) {
                     flag = SERVICE_CONNECTED
-                    val rewardsBinder = service as RewardsService.LocalBinder
+                    val rewardsBinder = service as SRWRewardsService.LocalBinder
                     mRewardsService = rewardsBinder.getService()
                     mRewardBound = true
                 }
