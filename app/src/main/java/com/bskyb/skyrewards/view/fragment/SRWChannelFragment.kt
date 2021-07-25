@@ -1,20 +1,18 @@
 package com.bskyb.skyrewards.view.fragment
 
+import android.app.Activity
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavOptions
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.FragmentChannelBinding
-import com.bskyb.skyrewards.utils.SRWAnimations
 import com.bskyb.skyrewards.utils.SRWConstants
 import com.bskyb.skyrewards.view.adapters.SRWChannelAdapter
+
 
 class SRWChannelFragment : Fragment() {
     private lateinit var binding: FragmentChannelBinding
@@ -30,6 +28,7 @@ class SRWChannelFragment : Fragment() {
             adapter = SRWChannelAdapter(binding.root as ViewGroup, SRWConstants.channelList.toList())
         }
 
+        hideKeyboard()
         setListener()
 
         SRWAnalytics.sendView("SRWIntroFragment")
@@ -40,5 +39,14 @@ class SRWChannelFragment : Fragment() {
         binding.backBtnText.setOnClickListener {
             findNavController().popBackStack()
         }
+    }
+
+    fun hideKeyboard() {
+        val imm: InputMethodManager = activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        var view = activity?.currentFocus
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
