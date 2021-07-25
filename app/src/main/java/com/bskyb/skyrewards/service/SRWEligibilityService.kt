@@ -7,8 +7,6 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Binder
 import android.os.IBinder
-import android.widget.Toast
-import com.bskyb.skyrewards.SRWApplication
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
