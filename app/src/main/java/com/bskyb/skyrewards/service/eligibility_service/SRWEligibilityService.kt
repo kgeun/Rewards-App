@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.service
+package com.bskyb.skyrewards.service.eligibility_service
 
 import android.app.Service
 import android.content.ComponentName
@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Binder
 import android.os.IBinder
+import com.bskyb.skyrewards.service.SRWServiceHelper
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -32,20 +33,20 @@ class SRWEligibilityService: Service() {
         fun getService(): SRWEligibilityService = this@SRWEligibilityService
     }
 
-    object Helper {
-        lateinit var eligibilityService: SRWEligibilityService
-        private lateinit var connection: ServiceConnection
-        var isBounded = false
+    object Helper: SRWServiceHelper {
+        override lateinit var srwService: Service
+        override lateinit var connection: ServiceConnection
+        override var isBounded = false
 
-        fun bindService(context: Context) {
+        override fun bindService(context: Context) {
             // Defines callbacks for service binding, passed to bindService()
             connection = object: ServiceConnection {
                 override fun onServiceConnected(className: ComponentName, service: IBinder) {
-                    eligibilityService = (service as SRWEligibilityService.LocalBinder).getService()
+                    srwService = (service as LocalBinder).getService()
                     isBounded = true
                 }
 
-                override fun onServiceDisconnected(arg0: ComponentName) {
+                override fun onServiceDisconnected(componentName: ComponentName) {
                     isBounded = false
                 }
             }
@@ -53,7 +54,7 @@ class SRWEligibilityService: Service() {
             context.bindService(Intent(context, SRWEligibilityService::class.java), connection, Context.BIND_AUTO_CREATE)
         }
 
-        fun stopService(context: Context) {
+        override fun stopService(context: Context) {
             context.unbindService(connection)
             isBounded = false
         }

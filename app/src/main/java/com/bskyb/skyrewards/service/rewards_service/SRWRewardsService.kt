@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.service
+package com.bskyb.skyrewards.service.rewards_service
 
 import android.app.Service
 import android.content.ComponentName
@@ -7,58 +7,62 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.os.Binder
 import android.os.IBinder
+import android.widget.Toast
+import com.bskyb.skyrewards.R
+import com.bskyb.skyrewards.data.model.SRWChannel
+import com.bskyb.skyrewards.service.eligibility_service.SRWEligibilityService
+import com.bskyb.skyrewards.service.SRWServiceHelper
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class SRWRewardsService : Service() {
+class SRWRewardsService: Service() {
     private val binder = LocalBinder()
-    private val mGenerator = Random()
 
+    fun startProcess(myChannel: SRWChannel, myAccountNumber: String) {
+        val engine = SRWSkyRewardsEngine(myChannel, myAccountNumber)
+        engine.startService()
+    }
+
+    // Responsibility of the RewardsService to invoke and release the Eligibility
     override fun onBind(intent: Intent): IBinder {
-        // Responsibility of the RewardsService to invoke and release the Eligibility
         SRWEligibilityService.Helper.bindService(this)
-
         return binder
     }
 
     override fun onUnbind(intent: Intent?): Boolean {
         SRWEligibilityService.Helper.stopService(this)
-
         return super.onUnbind(intent)
     }
 
-    /** method for clients  */
-    val randomNumber: Int
-        get() = mGenerator.nextInt(100)
-
     inner class LocalBinder : Binder() {
-        // Return this instance of LocalService so clients can call public methods
         fun getService(): SRWRewardsService = this@SRWRewardsService
     }
 
-    object Helper {
-        lateinit var rewardsService: SRWRewardsService
-        private lateinit var connection: ServiceConnection
-        var isBounded = false
+    object Helper: SRWServiceHelper {
+        override lateinit var srwService: Service
+        override lateinit var connection: ServiceConnection
+        override var isBounded = false
 
-        fun bindService(context: Context) {
+        override fun bindService(context: Context) {
             // Defines callbacks for service binding, passed to bindService()
             connection = object: ServiceConnection {
                 override fun onServiceConnected(className: ComponentName, service: IBinder) {
-                    rewardsService = (service as SRWRewardsService.LocalBinder).getService()
+                    srwService = (service as LocalBinder).getService()
                     isBounded = true
+                    Toast.makeText(context, R.string.rewards_service_online, Toast.LENGTH_SHORT).show()
                 }
 
-                override fun onServiceDisconnected(arg0: ComponentName) {
+                override fun onServiceDisconnected(componentName: ComponentName) {
                     isBounded = false
+                    Toast.makeText(context, R.string.rewards_service_offline, Toast.LENGTH_SHORT).show()
                 }
             }
 
             context.bindService(Intent(context, SRWRewardsService::class.java), connection, Context.BIND_AUTO_CREATE)
         }
 
-        fun stopService(context: Context) {
+        override fun stopService(context: Context) {
             context.unbindService(connection)
             isBounded = false
         }
