@@ -13,10 +13,10 @@
             android:id="@+id/splash_to_start"
             app:destination="@id/startFragment"
             app:launchSingleTop="true"
-            app:enterAnim="@anim/slide_to_right"
-            app:exitAnim="@anim/slide_to_left"
-            app:popEnterAnim="@anim/slide_to_right"
-            app:popExitAnim="@anim/slide_to_left"
+            app:enterAnim="@null"
+            app:popEnterAnim="@null"
+            app:exitAnim="@null"
+            app:popExitAnim="@null"
             app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -28,10 +28,10 @@
         <action
             android:id="@+id/start_to_channel"
             app:destination="@id/channelFragment"
-            app:enterAnim="@anim/slide_from_right"
-            app:exitAnim="@anim/slide_to_left"
-            app:popEnterAnim="@anim/slide_from_right"
-            app:popExitAnim="@anim/slide_to_left"/>
+            app:enterAnim="@null"
+            app:popEnterAnim="@null"
+            app:exitAnim="@null"
+            app:popExitAnim="@null"/>
     </fragment>
 
     <fragment
@@ -42,11 +42,10 @@
         <action
             android:id="@+id/channel_to_account"
             app:destination="@id/accountNumberFragment"
-            app:enterAnim="@anim/slide_from_right"
-            app:exitAnim="@anim/slide_to_left"
-            app:popEnterAnim="@anim/slide_from_right"
-            app:popExitAnim="@anim/slide_to_left"/>
-
+            app:enterAnim="@null"
+            app:popEnterAnim="@null"
+            app:exitAnim="@null"
+            app:popExitAnim="@null"/>
     </fragment>
 
     <fragment
