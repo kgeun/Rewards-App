@@ -9,8 +9,11 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.FragmentAccountNumberBinding
+import com.bskyb.skyrewards.utils.SRWUtils
+import com.bskyb.skyrewards.utils.SkyRewardsEngine_Client
 import com.bskyb.skyrewards.view.SRWBaseFragment
 import com.bskyb.skyrewards.view.SRWMainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,8 +41,12 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
 
     private fun observeResult() {
         mainViewModel.myAccountNumber.observe(this) {
-            Toast.makeText(activity, "accountNuber : ${it}", Toast.LENGTH_SHORT).show()
+            startSkyEngine()
         }
+    }
+
+    private fun startSkyEngine() {
+        SkyRewardsEngine_Client(mainViewModel.myChannel.value!!, mainViewModel.myAccountNumber.value!!, requireContext()).startService()
     }
 
     private fun setBtnActions() {
@@ -68,9 +75,9 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
 
     private fun validateAccountNumber(accountNumberString: String) {
         if (accountNumberString.length != 12) {
-            Toast.makeText(activity, "Please enter all 12-digit account numbers.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.account_number_validate_fail_message), Toast.LENGTH_SHORT).show()
         } else {
-            mainViewModel.myAccountNumber.postValue(accountNumberString)
+            mainViewModel.myAccountNumber.postValue(SRWUtils.sha256(accountNumberString))
         }
     }
 }
