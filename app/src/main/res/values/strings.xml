@@ -18,4 +18,6 @@
     <!-- Rewards Service Related Message -->
     <string name="rewards_service_online">RewardsService is online.</string>
     <string name="rewards_service_offline">RewardsService is offline.</string>
+    <string name="rewards_service_offline_try_restart">RewardsService is currently offline. Please restart the app.</string>
+    <string name="account_number_validate_fail_message">Please enter all 12-digit account numbers.</string>
 </resources>
