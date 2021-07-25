@@ -1,10 +1,10 @@
 package com.bskyb.skyrewards.view.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.databinding.ListitemChannelBinding
 import com.bskyb.skyrewards.databinding.ListitemChannelHeaderBinding
@@ -46,6 +46,10 @@ class SRWChannelAdapter(val parentView: ViewGroup, val items: List<SRWChannel>) 
         fun bind(item: SRWChannel) {
             binding.apply {
                 channel = item
+                root.setOnClickListener {
+//                    findNavController(it).navigate(R.id.splash_to_start, null, null, FragmentNavigatorExtras(binding.topLogoImg to "app_logo"))
+                    findNavController(it).navigate(R.id.channel_to_account)
+                }
                 executePendingBindings()
             }
         }

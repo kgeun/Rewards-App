@@ -8,6 +8,8 @@
     <color name="primary_teal_2">#3FA196</color>
     <color name="secondary_teal_3">#3F8C70</color>
     <color name="secondary_teal_4">#53A69D</color>
+    <color name="primary_teal_1_0.1">#1A5DCAC7</color>
+    <color name="primary_teal_1_0.3">#4D5DCAC7</color>
 
     <!-- Achromatic Series -->
     <color name="basic_black">#292929</color>

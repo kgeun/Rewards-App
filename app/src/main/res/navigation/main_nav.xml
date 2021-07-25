@@ -37,13 +37,22 @@
     <fragment
         android:id="@+id/channelFragment"
         android:name="com.bskyb.skyrewards.view.fragment.SRWChannelFragment"
-        tools:layout="@layout/fragment_channel" />
+        tools:layout="@layout/fragment_channel">
 
-<!--    <fragment-->
-<!--        android:id="@+id/farmsListFragment"-->
-<!--        android:name="com.kgeun.freshpeach.fragments.KFPFarmsListFragment"-->
-<!--        android:label=""-->
-<!--        tools:layout="@layout/fragment_farms_list" />-->
+        <action
+            android:id="@+id/channel_to_account"
+            app:destination="@id/accountNumberFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_right"
+            app:popExitAnim="@anim/slide_to_left"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/accountNumberFragment"
+        android:name="com.bskyb.skyrewards.view.fragment.SRWAccountNumberFragment"
+        tools:layout="@layout/fragment_account_number" />
 
 <!--    <fragment-->
 <!--        android:id="@+id/developerInfoFragment"-->

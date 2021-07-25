@@ -15,7 +15,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/basic_black_0.5"
+            android:textColor="@color/black0.7"
             android:lineSpacingExtra="5sp"
             android:textSize="15sp"
             android:layout_marginHorizontal="7dp"

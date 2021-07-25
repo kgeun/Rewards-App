@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="adapter"
+            type="com.bskyb.skyrewards.view.adapters.SRWChannelAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/statusbarView"
+            style="@style/StatusBar"
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/topLogoImg"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/app_logo_1"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="10dp"
+            android:transitionName="app_logo"
+            app:layout_constraintTop_toBottomOf="@id/statusbarView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center_horizontal"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/accountDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black0.7"
+            android:lineSpacingExtra="5sp"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="29dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/account_number_description"
+            app:layout_constraintTop_toBottomOf="@id/topLogoImg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/accountNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginHorizontal="29dp"
+            app:layout_constraintTop_toBottomOf="@id/accountDescriptionText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:letterSpacing="0.3"
+            android:inputType="number"
+            android:maxLength="12"
+            android:imeOptions="actionDone"
+            android:background="@drawable/account_edittext_bg"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/buttonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="30dp">
+
+            <TextView
+                android:id="@+id/prevBtnText"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:text="&lt;"
+                android:background="@drawable/btn_bg_2"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="34dp"
+                android:layout_marginRight="7dp" />
+
+            <TextView
+                android:id="@+id/nextBtnText"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Next"
+                android:background="@drawable/btn_bg_1"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_marginRight="34dp"
+                android:layout_marginLeft="7dp"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
