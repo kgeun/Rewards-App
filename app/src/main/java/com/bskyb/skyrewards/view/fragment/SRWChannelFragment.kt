@@ -6,47 +6,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.FragmentChannelBinding
 import com.bskyb.skyrewards.utils.SRWConstants
+import com.bskyb.skyrewards.utils.SRWUtils
+import com.bskyb.skyrewards.view.SRWBaseFragment
 import com.bskyb.skyrewards.view.adapters.SRWChannelAdapter
 
-
-class SRWChannelFragment : Fragment() {
+class SRWChannelFragment : SRWBaseFragment() {
     private lateinit var binding: FragmentChannelBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentChannelBinding.inflate(inflater, container, false)
+        binding.adapter = SRWChannelAdapter(binding.root as ViewGroup, SRWConstants.channelList.toList())
 
-        binding.apply {
-            adapter = SRWChannelAdapter(binding.root as ViewGroup, SRWConstants.channelList.toList())
-        }
+        SRWUtils.hideKeyboard(activity)
+        setBtnActions()
 
-        hideKeyboard()
-        setListener()
-
-        SRWAnalytics.sendView("SRWIntroFragment")
         return binding.root
     }
 
-    private fun setListener() {
+    private fun setBtnActions() {
         binding.backBtnText.setOnClickListener {
             findNavController().popBackStack()
+            SRWAnalytics.sendClick("BackBtn_${javaClass.simpleName}")
         }
-    }
-
-    fun hideKeyboard() {
-        val imm: InputMethodManager = activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        var view = activity?.currentFocus
-        if (view == null) {
-            view = View(activity)
-        }
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

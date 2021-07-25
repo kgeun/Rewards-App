@@ -1,11 +1,13 @@
 package com.bskyb.skyrewards.view.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bskyb.skyrewards.R
+import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.databinding.ListitemChannelBinding
 import com.bskyb.skyrewards.databinding.ListitemChannelHeaderBinding
@@ -55,6 +57,7 @@ class SRWChannelAdapter(val parentView: ViewGroup, val items: List<SRWChannel>):
                         .setPopEnterAnim(R.anim.slide_from_left)
                         .setPopExitAnim(R.anim.slide_to_right)
                     findNavController(root).navigate(R.id.channel_to_account, null, navBuilder.build())
+                    SRWAnalytics.sendClick("ChannelBtn_${item.channelType}_${javaClass.simpleName}")
                 }
                 executePendingBindings()
             }

@@ -13,31 +13,23 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import com.bskyb.skyrewards.R
+import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.ActivityMainBinding
 
 open class SRWMainActivity: AppCompatActivity() {
 
     val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-
-    lateinit var navController: NavController
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var navHostFragment: NavHostFragment
-
-    var statusbarHeight = 0
-
-    fun Int.dp2px(context: Context) :Int {
-        val scale = context.resources.displayMetrics.density
-        return (this * scale).toInt()
-    }
+    private var statusbarHeight = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        // Basic status bar Height
         statusbarHeight = resources.getDimensionPixelSize(R.dimen.statusbar_height)
         val decorView: View = window.decorView
 
-        // Set transparent status bar
+        // Setting transparent status bar
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         } else {
@@ -45,6 +37,8 @@ open class SRWMainActivity: AppCompatActivity() {
             wic.isAppearanceLightStatusBars = true
             WindowCompat.setDecorFitsSystemWindows(window, false)
         }
+
+        sendAnalytics()
     }
 
     override fun onStart() {
@@ -61,5 +55,9 @@ open class SRWMainActivity: AppCompatActivity() {
         val statusbarView : View?  = findViewById<View>(R.id.statusbarView)
         statusbarView?.visibility = View.VISIBLE
         statusbarView?.layoutParams?.height = statusbarHeight
+    }
+
+    private fun sendAnalytics() {
+        SRWAnalytics.sendView(javaClass.simpleName)
     }
 }
