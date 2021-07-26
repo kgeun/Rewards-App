@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.data.constant
+package com.bskyb.skyrewards.data.enums
 
 enum class SRWServiceResult(val message: String, val outputId: Int) {
     CUSTOMER_ELIGIBLE("Customer is eligible", 1),

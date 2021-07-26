@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.data.constant
+package com.bskyb.skyrewards.data.enums
 
 enum class SRWRewardType(val title: String, val rewardId: Int) {
     NOT_AVAILABLE("Not Available", 0),
