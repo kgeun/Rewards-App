@@ -13,10 +13,4 @@ class SRWMainViewModel @Inject constructor() : ViewModel() {
     val myChannel = MutableLiveData<Int>()
     val myAccountNumber = MutableLiveData<String>()
 
-    init {
-        // set Default Value
-        myAccountNumber.postValue("")
-        myChannel.postValue(0)
-    }
-
 }

@@ -2,19 +2,25 @@ package com.bskyb.skyrewards.view
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.fragment.app.viewModels
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.ActivityMainBinding
 import com.bskyb.skyrewards.service.rewards_service.SRWRewardsService
+import com.bskyb.skyrewards.utils.SkyRewardsEngine_Client
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 open class SRWMainActivity: AppCompatActivity() {
+
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    val mainViewModel: SRWMainViewModel by viewModels()
     private var statusbarHeight = 0
 
 
@@ -23,7 +29,25 @@ open class SRWMainActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         setTransparentStatusBar()
+        observeResult()
         sendAnalytics()
+    }
+
+    private fun observeResult() {
+        mainViewModel.myAccountNumber.observe(this) {
+            Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
+            if (mainViewModel.myChannel.value != null &&
+                mainViewModel.myAccountNumber.value != null) {
+                startSkyEngine()
+            }
+        }
+
+        mainViewModel.myChannel.observe(this) { }
+    }
+
+    private fun startSkyEngine() {
+        Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
+        SkyRewardsEngine_Client(mainViewModel.myChannel.value!!, mainViewModel.myAccountNumber.value!!, this).startService()
     }
 
     override fun onStart() {

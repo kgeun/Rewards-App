@@ -1,5 +1,6 @@
 package com.bskyb.skyrewards.view.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -13,7 +14,6 @@ import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.databinding.ListitemChannelBinding
 import com.bskyb.skyrewards.databinding.ListitemChannelHeaderBinding
 import com.bskyb.skyrewards.view.fragment.SRWChannelFragment
-
 
 class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWChannel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val HEADER = 0
@@ -62,7 +62,7 @@ class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWCha
                     findNavController(root).navigate(R.id.channel_to_account, null, navBuilder.build())
 
                     (binding.root.findFragment<SRWChannelFragment>()).updateChannel(item.channelId)
-
+                    Log.i("kglee", "channelid : " + item.channelId)
                     Toast.makeText(binding.root.context, "${item.channelTitle} has been selected.", Toast.LENGTH_SHORT).show()
                     SRWAnalytics.sendClick("ChannelBtn_${item.channelType}_${javaClass.simpleName}")
                 }

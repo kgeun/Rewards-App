@@ -24,6 +24,7 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
 
     private lateinit var binding: FragmentAccountNumberBinding
     val mainViewModel: SRWMainViewModel by viewModels()
+    private var nextFlag = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,25 +35,20 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
         binding = FragmentAccountNumberBinding.inflate(inflater, container, false)
 
         setBtnActions()
-        observeResult()
-
-        SRWAnalytics.sendView("SRWIntroFragment")
+//        observeResult()
         return binding.root
     }
 
-    private fun observeResult() {
-        mainViewModel.myAccountNumber.observe(this) {
-            if (mainViewModel.myChannel.value!! > 0 && it != "") {
-                startSkyEngine()
-            }
-        }
-        mainViewModel.myChannel.observe(this) {}
-    }
-
-    private fun startSkyEngine() {
-        Log.i("kglee","${mainViewModel.myChannel} ${mainViewModel.myAccountNumber.value}")
-        SkyRewardsEngine_Client(mainViewModel.myChannel.value!!, mainViewModel.myAccountNumber.value!!, requireContext()).startService()
-    }
+//
+//    private fun observeResult() {
+//        mainViewModel.myAccountNumber.observe(viewLifecycleOwner) {
+//            Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
+//            if (mainViewModel.myChannel.value != null &&
+//                mainViewModel.myAccountNumber.value != null) {
+//                    startSkyEngine()
+//            }
+//        }
+//    }
 
     private fun setBtnActions() {
         binding.backBtnText.setOnClickListener {
@@ -83,6 +79,9 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
             Toast.makeText(requireContext(), getString(R.string.account_number_validate_fail_message), Toast.LENGTH_SHORT).show()
         } else {
             mainViewModel.myAccountNumber.postValue(SRWUtils.sha256(accountNumberString))
+
+            Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
+            nextFlag = true
         }
     }
 }
