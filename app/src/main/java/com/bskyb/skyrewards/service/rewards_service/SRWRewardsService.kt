@@ -10,17 +10,18 @@ import android.os.IBinder
 import android.widget.Toast
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.data.model.SRWChannel
+import com.bskyb.skyrewards.service.SRWService
 import com.bskyb.skyrewards.service.eligibility_service.SRWEligibilityService
 import com.bskyb.skyrewards.service.SRWServiceHelper
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class SRWRewardsService: Service() {
+class SRWRewardsService: SRWService() {
     private val binder = LocalBinder()
 
-    fun engineProcess(myChannel: Int, encodedAccountNumber: String): Int {
-        return SRWSkyRewardsEngine(myChannel, encodedAccountNumber).engineProcess()
+    override fun engineProcess(encodedAccountNumber: String, myChannel: Int): Int {
+        return SRWSkyRewardsEngine(encodedAccountNumber, myChannel).engineProcess()
     }
 
     // Responsibility of the RewardsService to invoke and release the Eligibility

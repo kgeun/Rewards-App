@@ -7,6 +7,7 @@ import com.google.common.hash.Hashing
 import java.math.BigInteger
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
+import java.util.*
 
 object SRWUtils {
 
@@ -22,4 +23,6 @@ object SRWUtils {
     fun sha256(input :String): String = Hashing.sha256()
         .hashString(input, StandardCharsets.UTF_8)
         .toString()
+
+    fun random100(): Int = Random().nextInt(100)
 }
