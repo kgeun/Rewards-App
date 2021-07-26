@@ -2,6 +2,7 @@ package com.bskyb.skyrewards.view.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.findFragment
@@ -55,21 +56,25 @@ class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWCha
                 cardView.isClickable = true
                 cardView.isFocusable = true
                 cardView.setOnClickListener {
-                    val navBuilder = NavOptions.Builder()
-                        .setEnterAnim(R.anim.slide_from_right)
-                        .setExitAnim(R.anim.slide_to_left)
-                        .setPopEnterAnim(R.anim.slide_from_left)
-                        .setPopExitAnim(R.anim.slide_to_right)
-                    findNavController(root).navigate(R.id.channel_to_account, null, navBuilder.build())
+                    moveToAccountWithAnim(root)
+//                    SRWPrefCtl.setMyChannelId(item.channelId)
+                    (binding.root.findFragment<SRWChannelFragment>()).insertChannel(item)
 
-//                    (binding.root.findFragment<SRWChannelFragment>()).updateChannel(item.channelId)
-                    SRWPrefCtl.setMyChannelId(item.channelId)
                     Toast.makeText(binding.root.context, "${item.channelTitle} has been selected.", Toast.LENGTH_SHORT).show()
                     SRWAnalytics.sendClick("ChannelBtn_${item.channelType}_${javaClass.simpleName}")
                 }
                 executePendingBindings()
             }
         }
+    }
+
+    private fun moveToAccountWithAnim(root: View) {
+        val navBuilder = NavOptions.Builder()
+            .setEnterAnim(R.anim.slide_from_right)
+            .setExitAnim(R.anim.slide_to_left)
+            .setPopEnterAnim(R.anim.slide_from_left)
+            .setPopExitAnim(R.anim.slide_to_right)
+        findNavController(root).navigate(R.id.channel_to_account, null, navBuilder.build())
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
