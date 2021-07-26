@@ -10,7 +10,7 @@ class SRWSkyRewardsEngine(val encodedAccountNumber: String, val myChannel: Int):
 
     override fun engineProcess(): Int {
         // 1. 5% chance to determine server failure
-        if (SRWUtils.random100() < 5)
+        if (SRWUtils.random100() < 7)
             return SRWServiceResult.TECHNICAL_FAILURE_ERROR1.outputId
 
         // 2. If channel is news or kids it returns ineligible

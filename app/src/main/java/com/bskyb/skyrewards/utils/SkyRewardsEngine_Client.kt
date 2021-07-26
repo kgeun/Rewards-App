@@ -17,7 +17,10 @@ class SkyRewardsEngine_Client(val myChannel: Int, val encodedAccountNumber: Stri
         if (!checkRewardsServiceStatus()) {
             Toast.makeText(context, R.string.rewards_service_offline_try_restart, Toast.LENGTH_SHORT).show()
         } else {
-            (SRWRewardsService.Helper.srwService as SRWRewardsService).engineProcess(encodedAccountNumber, myChannel)
+            val result = (SRWRewardsService.Helper.srwService as SRWRewardsService).engineProcess(encodedAccountNumber, myChannel)
+
+            Toast.makeText(context, "result=$result", Toast.LENGTH_SHORT).show()
+            Log.i("kglee","result=$result")
         }
     }
 

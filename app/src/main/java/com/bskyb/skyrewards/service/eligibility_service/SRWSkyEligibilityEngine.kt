@@ -7,7 +7,7 @@ import com.bskyb.skyrewards.utils.SRWUtils
 class SRWSkyEligibilityEngine(val encodedAccountNumber: String, val myChannel: Int): SRWSkyEngine{
     override fun engineProcess(): Int {
         // 1. 5% chance to determine server failure
-        if (SRWUtils.random100() < 5) {
+        if (SRWUtils.random100() < 7) {
             return SRWServiceResult.TECHNICAL_FAILURE_ERROR2.outputId
         }
 
