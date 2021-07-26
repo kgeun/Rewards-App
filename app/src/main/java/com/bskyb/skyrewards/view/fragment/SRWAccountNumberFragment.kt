@@ -1,7 +1,6 @@
 package com.bskyb.skyrewards.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -9,23 +8,31 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
+import com.bskyb.skyrewards.data.model.SRWCustomerData
+import com.bskyb.skyrewards.data.persistance.SRWMainDao
 import com.bskyb.skyrewards.databinding.FragmentAccountNumberBinding
 import com.bskyb.skyrewards.utils.SRWPrefCtl
 import com.bskyb.skyrewards.utils.SRWUtils
-import com.bskyb.skyrewards.utils.SkyRewardsEngine_Client
+import com.bskyb.skyrewards.utils.SkyRewardsClientEngine
 import com.bskyb.skyrewards.view.SRWBaseFragment
-import com.bskyb.skyrewards.view.SRWMainViewModel
+import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.NullPointerException
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SRWAccountNumberFragment : SRWBaseFragment() {
 
+    @Inject lateinit var mainDao: SRWMainDao
     private lateinit var binding: FragmentAccountNumberBinding
     val mainViewModel: SRWMainViewModel by viewModels()
-    private var nextFlag = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,20 +47,16 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
         return binding.root
     }
 
-
     private fun observeResult() {
-        mainViewModel.myAccountNumber.observe(viewLifecycleOwner) {
-            Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
-            if (mainViewModel.myAccountNumber.value != null) {
-                startSkyEngine()
+        mainViewModel.customerData.observe(viewLifecycleOwner) {
+            if (it?.accountNumber != null) {
+                startSkyEngine(it)
             }
         }
     }
 
-
-    private fun startSkyEngine() {
-//        Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
-        SkyRewardsEngine_Client(SRWPrefCtl.getMyChannelId()!!, mainViewModel.myAccountNumber.value!!, requireContext()).startService()
+    private fun startSkyEngine(customerData: SRWCustomerData) {
+        SkyRewardsClientEngine(customerData, requireContext()).startService()
     }
 
     private fun setBtnActions() {
@@ -81,13 +84,30 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
     }
 
     private fun validateAccountNumber(accountNumberString: String) {
-        if (accountNumberString.length != 12) {
-            Toast.makeText(requireContext(), getString(R.string.account_number_validate_fail_message), Toast.LENGTH_SHORT).show()
-        } else {
-            mainViewModel.myAccountNumber.postValue(SRWUtils.sha256(accountNumberString))
 
-            Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
-            nextFlag = true
+        try {
+            if (accountNumberString.length != 12) {
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.account_number_validate_fail_message),
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                val customerData = mainViewModel.customerData.value
+                customerData?.accountNumber = accountNumberString
+                insertCustomerData(customerData!!)
+            }
+        } catch (e: NullPointerException) {
+            // Check if customerData is null
+            e.printStackTrace()
+        }
+    }
+
+    private fun insertCustomerData(customerData: SRWCustomerData) {
+        mainViewModel.viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                mainDao.insertCustomerData(customerData)
+            }
         }
     }
 }

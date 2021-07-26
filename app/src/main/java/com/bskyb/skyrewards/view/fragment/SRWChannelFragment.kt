@@ -1,25 +1,31 @@
 package com.bskyb.skyrewards.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.data.model.SRWChannel
+import com.bskyb.skyrewards.data.model.SRWCustomerData
+import com.bskyb.skyrewards.data.persistance.SRWMainDao
 import com.bskyb.skyrewards.databinding.FragmentChannelBinding
 import com.bskyb.skyrewards.utils.SRWConstants
 import com.bskyb.skyrewards.utils.SRWUtils
 import com.bskyb.skyrewards.view.SRWBaseFragment
-import com.bskyb.skyrewards.view.SRWMainViewModel
+import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
 import com.bskyb.skyrewards.view.adapters.SRWChannelAdapter
+import com.google.type.DateTime
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SRWChannelFragment: SRWBaseFragment() {
+class SRWChannelFragment : SRWBaseFragment() {
+    @Inject lateinit var mainDao: SRWMainDao
+
     private lateinit var binding: FragmentChannelBinding
     val mainViewModel: SRWMainViewModel by viewModels()
 
@@ -43,7 +49,18 @@ class SRWChannelFragment: SRWBaseFragment() {
         }
     }
 
-    fun updateChannel(channel: Int) {
-        Log.i("kglee", "channelid : " + channel)
+    fun insertChannel(item: SRWChannel) {
+        var customerData: SRWCustomerData? = mainViewModel.customerData.value
+        if (customerData == null) {
+            customerData = SRWCustomerData()
+        }
+        customerData.channelId = item.channelId
+        customerData.timeStamp = System.currentTimeMillis()
+
+        mainViewModel.viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                mainDao.insertCustomerData(customerData)
+            }
+        }
     }
 }

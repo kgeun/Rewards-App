@@ -16,7 +16,7 @@ import com.bskyb.skyrewards.utils.SRWAnimationUtils
 import com.bskyb.skyrewards.view.SRWBaseFragment
 
 
-class SRWStartFragment : SRWBaseFragment() {
+class SRWStartFragment: SRWBaseFragment() {
     private lateinit var binding: FragmentStartBinding
 
     override fun onCreateView(
