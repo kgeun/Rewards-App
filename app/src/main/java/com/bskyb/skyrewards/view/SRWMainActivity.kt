@@ -29,26 +29,21 @@ open class SRWMainActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         setTransparentStatusBar()
-        observeResult()
+//        observeResult()
         sendAnalytics()
     }
 
-    private fun observeResult() {
-        mainViewModel.myAccountNumber.observe(this) {
-            Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
-            if (mainViewModel.myChannel.value != null &&
-                mainViewModel.myAccountNumber.value != null) {
-                startSkyEngine()
-            }
-        }
-
-        mainViewModel.myChannel.observe(this) { }
-    }
-
-    private fun startSkyEngine() {
-        Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
-        SkyRewardsEngine_Client(mainViewModel.myChannel.value!!, mainViewModel.myAccountNumber.value!!, this).startService()
-    }
+//    private fun observeResult() {
+//        mainViewModel.myAccountNumber.observe(this) {
+//            Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
+//            if (mainViewModel.myChannel.value != null &&
+//                mainViewModel.myAccountNumber.value != null) {
+//                startSkyEngine()
+//            }
+//        }
+//
+//        mainViewModel.myChannel.observe(this) { }
+//    }
 
     override fun onStart() {
         super.onStart()

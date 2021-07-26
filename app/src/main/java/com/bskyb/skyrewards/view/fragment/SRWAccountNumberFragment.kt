@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.FragmentAccountNumberBinding
+import com.bskyb.skyrewards.utils.SRWPrefCtl
 import com.bskyb.skyrewards.utils.SRWUtils
 import com.bskyb.skyrewards.utils.SkyRewardsEngine_Client
 import com.bskyb.skyrewards.view.SRWBaseFragment
@@ -35,20 +36,25 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
         binding = FragmentAccountNumberBinding.inflate(inflater, container, false)
 
         setBtnActions()
-//        observeResult()
+        observeResult()
         return binding.root
     }
 
-//
-//    private fun observeResult() {
-//        mainViewModel.myAccountNumber.observe(viewLifecycleOwner) {
-//            Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
-//            if (mainViewModel.myChannel.value != null &&
-//                mainViewModel.myAccountNumber.value != null) {
-//                    startSkyEngine()
-//            }
-//        }
-//    }
+
+    private fun observeResult() {
+        mainViewModel.myAccountNumber.observe(viewLifecycleOwner) {
+            Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
+            if (mainViewModel.myAccountNumber.value != null) {
+                startSkyEngine()
+            }
+        }
+    }
+
+
+    private fun startSkyEngine() {
+//        Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
+        SkyRewardsEngine_Client(SRWPrefCtl.getMyChannelId()!!, mainViewModel.myAccountNumber.value!!, requireContext()).startService()
+    }
 
     private fun setBtnActions() {
         binding.backBtnText.setOnClickListener {

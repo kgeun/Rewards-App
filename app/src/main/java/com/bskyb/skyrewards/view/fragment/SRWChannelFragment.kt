@@ -33,11 +33,7 @@ class SRWChannelFragment: SRWBaseFragment() {
         binding.adapter = SRWChannelAdapter (binding.root as ViewGroup, SRWConstants.channelList.toList())
         SRWUtils.hideKeyboard(activity)
         setBtnActions()
-        observeResult()
         return binding.root
-    }
-
-    private fun observeResult() {
     }
 
     private fun setBtnActions() {
@@ -49,6 +45,5 @@ class SRWChannelFragment: SRWBaseFragment() {
 
     fun updateChannel(channel: Int) {
         Log.i("kglee", "channelid : " + channel)
-        mainViewModel.myChannel.postValue(channel)
     }
 }

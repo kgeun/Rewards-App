@@ -12,13 +12,13 @@ class SkyRewardsEngine_Client(val myChannel: Int, val encodedAccountNumber: Stri
 
     fun startService() {
         Log.i("kglee","SkyRewardsEngine_Client Started!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        Log.i("kglee","$myChannel $encodedAccountNumber")
 
         if (!checkRewardsServiceStatus()) {
             Toast.makeText(context, R.string.rewards_service_offline_try_restart, Toast.LENGTH_SHORT).show()
         } else {
-            (SRWRewardsService.Helper.srwService as SRWRewardsService).engineProcess(myChannel, encodedAccountNumber)
+            (SRWRewardsService.Helper.srwService as SRWRewardsService).engineProcess(encodedAccountNumber, myChannel)
         }
-
     }
 
     fun checkRewardsServiceStatus(): Boolean {

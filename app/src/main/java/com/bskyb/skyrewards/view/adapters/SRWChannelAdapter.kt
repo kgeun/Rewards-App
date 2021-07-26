@@ -13,6 +13,7 @@ import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.databinding.ListitemChannelBinding
 import com.bskyb.skyrewards.databinding.ListitemChannelHeaderBinding
+import com.bskyb.skyrewards.utils.SRWPrefCtl
 import com.bskyb.skyrewards.view.fragment.SRWChannelFragment
 
 class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWChannel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -61,8 +62,8 @@ class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWCha
                         .setPopExitAnim(R.anim.slide_to_right)
                     findNavController(root).navigate(R.id.channel_to_account, null, navBuilder.build())
 
-                    (binding.root.findFragment<SRWChannelFragment>()).updateChannel(item.channelId)
-                    Log.i("kglee", "channelid : " + item.channelId)
+//                    (binding.root.findFragment<SRWChannelFragment>()).updateChannel(item.channelId)
+                    SRWPrefCtl.setMyChannelId(item.channelId)
                     Toast.makeText(binding.root.context, "${item.channelTitle} has been selected.", Toast.LENGTH_SHORT).show()
                     SRWAnalytics.sendClick("ChannelBtn_${item.channelType}_${javaClass.simpleName}")
                 }
