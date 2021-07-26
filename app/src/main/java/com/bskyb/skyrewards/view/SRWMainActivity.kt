@@ -2,48 +2,30 @@ package com.bskyb.skyrewards.view
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.fragment.app.viewModels
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.databinding.ActivityMainBinding
 import com.bskyb.skyrewards.service.rewards_service.SRWRewardsService
-import com.bskyb.skyrewards.utils.SkyRewardsEngine_Client
+import com.bskyb.skyrewards.utils.SRWPrefCtl
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 open class SRWMainActivity: AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    val mainViewModel: SRWMainViewModel by viewModels()
     private var statusbarHeight = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         setTransparentStatusBar()
-//        observeResult()
         sendAnalytics()
     }
-
-//    private fun observeResult() {
-//        mainViewModel.myAccountNumber.observe(this) {
-//            Log.i("kglee","${mainViewModel.myChannel.value} ${mainViewModel.myAccountNumber.value}")
-//            if (mainViewModel.myChannel.value != null &&
-//                mainViewModel.myAccountNumber.value != null) {
-//                startSkyEngine()
-//            }
-//        }
-//
-//        mainViewModel.myChannel.observe(this) { }
-//    }
 
     override fun onStart() {
         super.onStart()
@@ -54,6 +36,12 @@ open class SRWMainActivity: AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         SRWRewardsService.Helper.stopService(this)
+    }
+
+    override fun onDestroy() {
+        // Delete at onDestroy point in order not to persist
+        SRWPrefCtl.deleteAll()
+        super.onDestroy()
     }
 
     private fun setTransparentStatusBar() {
