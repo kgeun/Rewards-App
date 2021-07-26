@@ -7,13 +7,13 @@ import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.service.rewards_service.SRWRewardsService
 import java.lang.Thread.sleep
 
-class SkyRewardsEngine_Client(val myChannel: SRWChannel, val myAccountNumber: String, val context: Context)  {
+class SkyRewardsEngine_Client(val myChannel: Int, val encodedAccountNumber: String, val context: Context)  {
 
     fun startService() {
         if (!checkRewardsServiceStatus()) {
             Toast.makeText(context, R.string.rewards_service_offline_try_restart, Toast.LENGTH_SHORT).show()
         } else {
-
+            (SRWRewardsService.Helper.srwService as SRWRewardsService).engineProcess(myChannel, encodedAccountNumber)
         }
     }
 

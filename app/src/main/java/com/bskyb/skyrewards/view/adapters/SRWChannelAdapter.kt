@@ -3,7 +3,7 @@ package com.bskyb.skyrewards.view.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
+import androidx.fragment.app.findFragment
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -12,9 +12,10 @@ import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.databinding.ListitemChannelBinding
 import com.bskyb.skyrewards.databinding.ListitemChannelHeaderBinding
+import com.bskyb.skyrewards.view.fragment.SRWChannelFragment
 
 
-class SRWChannelAdapter (val parentView: ViewGroup, val items: List<SRWChannel>, val myChannel: MutableLiveData<SRWChannel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWChannel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val HEADER = 0
     val CONTENT = 1
 
@@ -34,7 +35,7 @@ class SRWChannelAdapter (val parentView: ViewGroup, val items: List<SRWChannel>,
         }
     }
 
-    override fun getItemCount(): Int = items.size + 1
+    override fun getItemCount(): Int = channelList.size + 1
 
     override fun getItemViewType(position: Int): Int {
         return if (position == 0)
@@ -59,7 +60,9 @@ class SRWChannelAdapter (val parentView: ViewGroup, val items: List<SRWChannel>,
                         .setPopEnterAnim(R.anim.slide_from_left)
                         .setPopExitAnim(R.anim.slide_to_right)
                     findNavController(root).navigate(R.id.channel_to_account, null, navBuilder.build())
-                    myChannel.postValue(item)
+
+                    (binding.root.findFragment<SRWChannelFragment>()).updateChannel(item.channelId)
+
                     Toast.makeText(binding.root.context, "${item.channelTitle} has been selected.", Toast.LENGTH_SHORT).show()
                     SRWAnalytics.sendClick("ChannelBtn_${item.channelType}_${javaClass.simpleName}")
                 }
@@ -70,7 +73,7 @@ class SRWChannelAdapter (val parentView: ViewGroup, val items: List<SRWChannel>,
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position > 0) {
-            (holder as ChannelHolder).bind(items[position - 1])
+            (holder as ChannelHolder).bind(channelList[position - 1])
         }
     }
 }

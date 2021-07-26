@@ -1,6 +1,7 @@
 package com.bskyb.skyrewards.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SRWAccountNumberFragment : SRWBaseFragment() {
 
     private lateinit var binding: FragmentAccountNumberBinding
-    private val mainViewModel: SRWMainViewModel by viewModels()
+    val mainViewModel: SRWMainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,11 +42,15 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
 
     private fun observeResult() {
         mainViewModel.myAccountNumber.observe(this) {
-            startSkyEngine()
+            if (mainViewModel.myChannel.value!! > 0 && it != "") {
+                startSkyEngine()
+            }
         }
+        mainViewModel.myChannel.observe(this) {}
     }
 
     private fun startSkyEngine() {
+        Log.i("kglee","${mainViewModel.myChannel} ${mainViewModel.myAccountNumber.value}")
         SkyRewardsEngine_Client(mainViewModel.myChannel.value!!, mainViewModel.myAccountNumber.value!!, requireContext()).startService()
     }
 

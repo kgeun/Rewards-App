@@ -19,9 +19,8 @@ import java.util.*
 class SRWRewardsService: Service() {
     private val binder = LocalBinder()
 
-    fun startProcess(myChannel: SRWChannel, myAccountNumber: String) {
-        val engine = SRWSkyRewardsEngine(myChannel, myAccountNumber)
-        engine.startService()
+    fun engineProcess(myChannel: Int, encodedAccountNumber: String): Int {
+        return SRWSkyRewardsEngine(myChannel, encodedAccountNumber).engineProcess()
     }
 
     // Responsibility of the RewardsService to invoke and release the Eligibility
