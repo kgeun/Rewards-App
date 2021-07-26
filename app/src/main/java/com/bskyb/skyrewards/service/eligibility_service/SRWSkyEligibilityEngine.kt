@@ -1,6 +1,6 @@
 package com.bskyb.skyrewards.service.eligibility_service
 
-import com.bskyb.skyrewards.data.constant.SRWServiceResult
+import com.bskyb.skyrewards.data.enums.SRWServiceResult
 import com.bskyb.skyrewards.service.SRWSkyEngine
 import com.bskyb.skyrewards.utils.SRWUtils
 
@@ -8,14 +8,14 @@ class SRWSkyEligibilityEngine(val encodedAccountNumber: String, val myChannel: I
     override fun engineProcess(): Int {
         // 1. 5% chance to determine server failure
         if (SRWUtils.random100() < 7) {
-            return SRWServiceResult.TECHNICAL_FAILURE_ERROR2.outputId
+            return SRWServiceResult.TECHNICAL_FAILURE_ERROR2.resultCode
         }
 
         // 2. Determining whether an account number is valid with its own algorithm
         if (isEligibleAccountNumber(encodedAccountNumber)) {
-            return SRWServiceResult.CUSTOMER_ELIGIBLE.outputId
+            return SRWServiceResult.CUSTOMER_ELIGIBLE.resultCode
         } else {
-            return SRWServiceResult.INVALID_ACCOUNT_NUMBER_ERROR.outputId
+            return SRWServiceResult.INVALID_ACCOUNT_NUMBER_ERROR.resultCode
         }
     }
 
