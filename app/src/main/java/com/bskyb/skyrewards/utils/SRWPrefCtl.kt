@@ -50,4 +50,8 @@ object SRWPrefCtl {
     fun getMyChannelId(): Int? {
         return get(PREF_MY_CHANNEL_ID, 0)
     }
+
+    fun deleteAll() {
+        setMyChannelId(0)
+    }
 }
