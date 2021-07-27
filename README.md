@@ -34,7 +34,7 @@ Sky News | Invalid | Ineligible
 Sky Music | Valid | Get Reward (Pirates of Caribbean Collection)
 Sky Music | Invalid | Invalid Account Number
    
-### Valid Account Number Criteri
+### Valid Account Number Criteria
 **If the first four digits are all the same, it is judged to be Valid**  
 
 
@@ -45,14 +45,14 @@ https://trello.com/b/liirAZJZ/sky-rewards
   
 ## Tech stacks
 
-Language : **Kotlin**  
-**MVVM Architecture, LiveData, DataBinding, Room** : The architecture needed to be applied in the future, considering scalability, and these were the choice.  
-**Hilt** : For clean architecture application, used Hilt, which is Google's official library and much simpler to use than Dagger.  
-**Android Navigation Component** : Chosen to quickly construct multi-step screens and animation  
-**Bound Services** : Selected to mock the backend server. I chose it because it was similar to the behavior of the backend in that it should always be simulated independently of the behavior of the client.  
-**Glide** : Only local images were used, but selected for optimal image processing and scalability.  
-**Moshi** : Apply json serialization library to mock communication with backend  
-**Firebase** : Firebase library has been applied to check application indicators such as Crashlytics and Event and for applying additional features in the future  
+- Language : **Kotlin**  
+- **MVVM Architecture, LiveData, DataBinding, Room** : The architecture needed to be applied in the future, considering scalability, and these were the choice.  
+- **Hilt** : For clean architecture application, used Hilt, which is Google's official library and much simpler to use than Dagger.  
+- **Android Navigation Component** : Chosen to quickly construct multi-step screens and animation  
+- **Bound Services** : Selected to mock the backend server. I chose it because it was similar to the behavior of the backend in that it should always be simulated independently of the behavior of the client.  
+- **Glide** : Only local images were used, but selected for optimal image processing and scalability.  
+- **Moshi** : Apply json serialization library to mock communication with backend  
+- **Firebase** : Firebase library has been applied to check application indicators such as Crashlytics and Event and for applying additional features in the future  
 
 
 ## Introduction to the project focus
@@ -78,36 +78,36 @@ Language : **Kotlin**
 > Input : `Customer_who_subscribed_sports_channel_and_have_invalid_account_number`  
 > Result : **Pass**
       
-> Input : `Customer_who_subscribed_kids_channel_and_have_valid_account_number`
+> Input : `Customer_who_subscribed_kids_channel_and_have_valid_account_number`  
 > Result : **Pass**
       
-> Input : `Customer_who_subscribed_kids_channel_and_have_invalid_account_number`
+> Input : `Customer_who_subscribed_kids_channel_and_have_invalid_account_number`  
 > Result : **Pass**
       
-> Input : `Customer_who_subscribed_music_channel_and_have_valid_account_number`
+> Input : `Customer_who_subscribed_music_channel_and_have_valid_account_number`  
 > Result : **Pass**
       
-> Input : `Customer_who_subscribed_music_channel_and_have_invalid_account_number`
+> Input : `Customer_who_subscribed_music_channel_and_have_invalid_account_number`  
 > Result : **Pass**
       
-> Input : `Customer_who_subscribed_news_channel_and_have_valid_account_number`
+> Input : `Customer_who_subscribed_news_channel_and_have_valid_account_number`  
 > Result : **Pass**
       
-> Input : `Customer_who_subscribed_news_channel_and_have_invalid_account_number`
+> Input : `Customer_who_subscribed_news_channel_and_have_invalid_account_number`  
 > Result : **Pass**
       
-> Input : `Customer_who_subscribed_movie_channel_and_have_valid_account_number`
+> Input : `Customer_who_subscribed_movie_channel_and_have_valid_account_number`  
 > Result : **Pass**
       
-> Input : `Customer_who_subscribed_movie_channel_and_have_invalid_account_number`
+> Input : `Customer_who_subscribed_movie_channel_and_have_invalid_account_number`  
 > Result : **Pass**
       
 2. Testing for Room Database and ViewModel
       
-> Input : Customer Data
+> Input : Customer Data  
 > Result : **Pass**
       
-> Input : Rewards Result
+> Input : Rewards Result  
 > Result : **Pass**
       
 Total : 12 cases 
