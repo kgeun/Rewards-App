@@ -13,14 +13,28 @@ Sky Rewards is an Android native app that tells customers who have been using Sk
 
 
 ## How to use the app
-You can download APK file here : https://drive.google.com/drive/folders/1ChExbsmyO0zOGH-CIZIMrq132mBjGiak?usp=sharing  
-Please download and install the SkyRewards_live_release_1.0_1_20210727.apk file.  
-You can proceed according to the steps instructed by the app. Here are the expected result values based on the value you enter:  
+1. You can download APK file here : https://drive.google.com/drive/folders/1ChExbsmyO0zOGH-CIZIMrq132mBjGiak?usp=sharing  
+2. Please download and install the SkyRewards_live_release_1.0_1_20210727.apk file.  
+3. You can proceed according to the steps instructed by the app. Here are the expected result values based on the value you enter:  
 
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+Channel | Account Number Validity | Result
+------------ | ---------------------|----------
+Sky Sports | Valid | Get Reward (Champions League Final Ticket)
+Sky Sports | Invalid | Invalid Account Number
+------------ | ---------------------------|----------
+Sky Kids | Valid | Ineligible
+Sky Kids | Invalid | Ineligible
+------------ | ---------------------------|----------
+Sky Music | Valid | Karaoke Pro Microphone
+Sky Music | Invalid | Invalid Account Number
+------------ | ---------------------------|----------
+Sky News | Valid | Ineligible
+Sky News | Invalid | Ineligible
+------------ | ---------------------------|----------
+Sky Music | Valid | Pirates of Caribbean Collection
+Sky Music | Invalid | Invalid Account Number
+   
+** Valid Account Number Criteria : If the first four digits are all the same, it is judged to be Valid    
 
 
 ## Source Repository
