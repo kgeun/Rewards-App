@@ -1,29 +1,32 @@
 package com.bskyb.skyrewards.view.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.data.model.SRWCustomerData
+import com.bskyb.skyrewards.data.model.SRWRewardResult
 import com.bskyb.skyrewards.data.persistance.SRWMainDao
 import com.bskyb.skyrewards.databinding.FragmentAccountNumberBinding
-import com.bskyb.skyrewards.utils.SRWPrefCtl
-import com.bskyb.skyrewards.utils.SRWUtils
-import com.bskyb.skyrewards.utils.SkyRewardsClientEngine
+import com.bskyb.skyrewards.service.SRWSkyClientEngine
 import com.bskyb.skyrewards.view.SRWBaseFragment
 import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 import java.lang.NullPointerException
 import javax.inject.Inject
 
@@ -53,10 +56,39 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
                 startSkyEngine(it)
             }
         }
+
+        mainViewModel.rewardResult.observe(viewLifecycleOwner) {
+            if (it != null) {
+                goToResultFragment(it)
+            }
+        }
+    }
+
+    private fun goToResultFragment(result: SRWRewardResult) {
+        val navBuilder = NavOptions.Builder()
+            .setEnterAnim(R.anim.slide_from_right)
+            .setExitAnim(R.anim.slide_to_left)
+            .setPopEnterAnim(R.anim.slide_from_left)
+            .setPopExitAnim(R.anim.fade_out)
+
+        findNavController()
+            .navigate(
+                SRWAccountNumberFragmentDirections.accountToResult(result)
+                ,navBuilder.build())
     }
 
     private fun startSkyEngine(customerData: SRWCustomerData) {
-        SkyRewardsClientEngine(customerData, requireContext()).startService()
+        mainViewModel.viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                try {
+                    val rewardResult =
+                        SRWSkyClientEngine(customerData, requireContext()).getRewardResult()
+                    mainDao.insertRewardResult(rewardResult!!)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
     }
 
     private fun setBtnActions() {
@@ -95,6 +127,7 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
             } else {
                 val customerData = mainViewModel.customerData.value
                 customerData?.accountNumber = accountNumberString
+                Log.i("kglee", "customerData?.accountNumber : " + customerData?.accountNumber)
                 insertCustomerData(customerData!!)
             }
         } catch (e: NullPointerException) {

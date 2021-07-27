@@ -24,10 +24,10 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class SRWChannelFragment : SRWBaseFragment() {
-    @Inject lateinit var mainDao: SRWMainDao
 
     private lateinit var binding: FragmentChannelBinding
     val mainViewModel: SRWMainViewModel by viewModels()
+    @Inject lateinit var mainDao: SRWMainDao
 
     override fun onCreateView(
         inflater: LayoutInflater,

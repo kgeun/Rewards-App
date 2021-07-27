@@ -51,17 +51,37 @@
     <fragment
         android:id="@+id/accountNumberFragment"
         android:name="com.bskyb.skyrewards.view.fragment.SRWAccountNumberFragment"
-        tools:layout="@layout/fragment_account_number" />
+        tools:layout="@layout/fragment_account_number">
+        <action
+            android:id="@+id/account_to_result"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@null"
+            app:popEnterAnim="@null"
+            app:exitAnim="@null"
+            app:popExitAnim="@null">
+            <argument
+                android:name="rewardResult"
+                app:argType="com.bskyb.skyrewards.data.model.SRWRewardResult"/>
+        </action>
+        <argument
+            android:name="rewardResult"
+            app:argType="com.bskyb.skyrewards.data.model.SRWRewardResult" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/developerInfoFragment"-->
-<!--        android:name="com.kgeun.freshpeach.fragments.KFPDeveloperInfoFragment"-->
-<!--        android:label=""-->
-<!--        tools:layout="@layout/fragment_developer_info" />-->
+    </fragment>
 
-<!--    <fragment-->
-<!--        android:id="@+id/instagramFragment"-->
-<!--        android:name="com.kgeun.freshpeach.fragments.KFPInstagramFragment"-->
-<!--        android:label=""-->
-<!--        tools:layout="@layout/fragment_instagram" />-->
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.bskyb.skyrewards.view.fragment.SRWResultFragment"
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/result_to_start"
+            app:destination="@id/startFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/resultFragment"
+            app:popUpToInclusive="true"
+            app:enterAnim="@null"
+            app:popEnterAnim="@null"
+            app:exitAnim="@null"
+            app:popExitAnim="@null"/>
+    </fragment>
 </navigation>

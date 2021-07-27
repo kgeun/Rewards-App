@@ -21,4 +21,10 @@ interface SRWMainDao {
 
     @Query("SELECT * FROM customerData ORDER BY timestamp DESC LIMIT 1")
     fun getCustomerData(): LiveData<SRWCustomerData>
+
+    @Query("DELETE FROM RewardResult")
+    fun truncateRewardResult()
+
+    @Query("DELETE FROM customerData")
+    fun truncateCustomerData()
 }

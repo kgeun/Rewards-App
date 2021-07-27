@@ -7,17 +7,30 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
+import com.bskyb.skyrewards.data.persistance.SRWMainDao
 import com.bskyb.skyrewards.databinding.FragmentStartBinding
 import com.bskyb.skyrewards.utils.SRWAnimationUtils
+import com.bskyb.skyrewards.utils.SRWPrefCtl
 import com.bskyb.skyrewards.view.SRWBaseFragment
+import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class SRWStartFragment: SRWBaseFragment() {
     private lateinit var binding: FragmentStartBinding
+    val mainViewModel: SRWMainViewModel by viewModels()
+    @Inject lateinit var mainDao: SRWMainDao
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +44,11 @@ class SRWStartFragment: SRWBaseFragment() {
         setListener()
         setAnim()
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        clearAllData()
     }
 
     private fun setListener() {
@@ -56,5 +74,16 @@ class SRWStartFragment: SRWBaseFragment() {
             binding.rewardContentScroll.startAnimation(SRWAnimationUtils.getAnim500(R.anim.translate_fade_in, requireContext()))
             binding.nextBtnText.startAnimation(SRWAnimationUtils.getAnim500(android.R.anim.fade_in, requireContext()))
         }, 500)
+    }
+
+    private fun clearAllData() {
+        // truncate data at onStart point in order not to persist
+        SRWPrefCtl.deleteAll()
+        mainViewModel.viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                mainDao.truncateCustomerData()
+                mainDao.truncateRewardResult()
+            }
+        }
     }
 }
