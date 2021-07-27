@@ -67,7 +67,7 @@ You can check the statistics on the app through Firebase. I delivered the accoun
 2. By simulating actual client to server communication, the information input by the user and the reward information sent by the server are all encapsulated in a data class and designed to communicate in byte array. It is designed not to change the communication protocol even if the structure changes.
 3. The settings set by the company (channels, rewards, service error output, etc.) are all managed in one location (constants directory or package in the project) affecting the entire project.      
 ### Object-oriented and test-aware design
-1. In the RewardsService and Eligible Service, which are the core algorithms of the service, the service stage and the actual logic part are separated and designed to increase the test efficiency.      
+1. In the RewardsService and Eligible Service, which are the core algorithms of the service, the service stage and the actual logic part are separated and designed to increase the test efficiency and meet the OOP practice.      
 ### Points that are close to the actual service
 1. It has a beautiful and practical UX design that looks like using Sky's real app.
 2. By applying scrolling to each screen, you can see the entire content even on a small screen.
