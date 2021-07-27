@@ -42,13 +42,18 @@ Sky Movie | Invalid | Invalid Account Number
 https://bitbucket.org/freebuds/sky-rewards/src/master/  
 ## Project Kanban Board
 https://trello.com/b/liirAZJZ/sky-rewards  
+## Firebase Console
+<img width="800" src="https://user-images.githubusercontent.com/7823937/127239585-0d3f6a27-5b5e-48d9-95f7-d01b3efd2303.png">  
+https://console.firebase.google.com/  
+You can check the statistics on the app through Firebase. I delivered the account that I can check separately.    
+
   
 ## Tech stacks
 
 - Language : **Kotlin**  
 - **MVVM Architecture, LiveData, DataBinding, Room** : The architecture needed to be applied in the future, considering scalability, and these were the choice.  
 - **Hilt** : For clean architecture application, used Hilt, which is Google's official library and much simpler to use than Dagger.  
-- **Android Navigation Component** : Chosen to quickly construct multi-step screens and animation  
+- **Navigation Architecture Component** : Chosen to quickly construct multi-step screens and animation  
 - **Bound Services** : Selected to mock the backend server. I chose it because it was similar to the behavior of the backend in that it should always be simulated independently of the behavior of the client.  
 - **Glide** : Only local images were used, but selected for optimal image processing and scalability.  
 - **Moshi** : Apply json serialization library to mock communication with backend  
