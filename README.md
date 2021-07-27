@@ -31,8 +31,8 @@ Sky Music | Invalid | Invalid Account Number
 Sky News | Valid | Ineligible
 Sky News | Invalid | Ineligible
 ------------ | --------------------------- | ---------------------------
-Sky Music | Valid | Get Reward (Pirates of Caribbean Collection)
-Sky Music | Invalid | Invalid Account Number
+Sky Movie | Valid | Get Reward (Pirates of Caribbean Collection)
+Sky Movie | Invalid | Invalid Account Number
    
 ### Valid Account Number Criteria
 **If the first four digits are all the same, it is judged to be Valid**  
