@@ -5,7 +5,7 @@ import com.bskyb.skyrewards.data.model.SRWChannel
 
 object SRWConstants {
     const val ANIM_DURATION: Long = 800
-    val channelList = arrayOf<SRWChannel>(
+    val channelList = arrayOf(
         SRWChannel(
             SRWChannelType.SPORTS,
             SRWChannelType.SPORTS.channelId,
@@ -35,5 +35,6 @@ object SRWConstants {
             SRWChannelType.MOVIE.channelId,
             SRWChannelType.MOVIE.title,
             SRWChannelType.MOVIE.imageId
-        ))
+        )
+    )
 }

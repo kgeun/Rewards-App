@@ -55,7 +55,6 @@ class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWCha
                 cardView.isFocusable = true
                 cardView.setOnClickListener {
                     moveToAccountWithAnim(root)
-//                    SRWPrefCtl.setMyChannelId(item.channelId)
                     (binding.root.findFragment<SRWChannelFragment>()).insertChannel(item)
 
                     Toast.makeText(binding.root.context, "${item.channelTitle} has been selected.", Toast.LENGTH_SHORT).show()

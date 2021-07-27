@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.IBinder
 
 abstract class SRWService: Service() {
-
     abstract override fun onBind(intent: Intent): IBinder?
     abstract fun serviceProcess(rawData: ByteArray): ByteArray
 

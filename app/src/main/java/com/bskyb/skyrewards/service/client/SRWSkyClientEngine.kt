@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.service
+package com.bskyb.skyrewards.service.client
 
 import android.content.Context
 import android.widget.Toast

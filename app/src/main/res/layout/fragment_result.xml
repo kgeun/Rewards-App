@@ -30,7 +30,7 @@
             android:layout_marginTop="10dp"
             android:transitionName="app_logo"
             android:translationZ="2dp"
-            android:contentDescription="sky rewards app logo"
+            android:contentDescription="@string/top_logo_description"
             app:layout_constraintTop_toBottomOf="@id/statusbarView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -45,7 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:paddingBottom="100dp"
+            android:paddingBottom="200dp"
             android:clipToPadding="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout

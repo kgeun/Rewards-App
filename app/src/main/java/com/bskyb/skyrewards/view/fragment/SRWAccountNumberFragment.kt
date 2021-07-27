@@ -17,7 +17,7 @@ import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.data.model.SRWRewardResult
 import com.bskyb.skyrewards.data.persistance.SRWMainDao
 import com.bskyb.skyrewards.databinding.FragmentAccountNumberBinding
-import com.bskyb.skyrewards.service.SRWSkyClientEngine
+import com.bskyb.skyrewards.service.client.SRWSkyClientEngine
 import com.bskyb.skyrewards.view.SRWBaseFragment
 import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
 import dagger.hilt.android.AndroidEntryPoint

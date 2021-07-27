@@ -21,10 +21,7 @@
     <string name="rewards_service_offline_try_restart">RewardsService is currently offline. Please restart the app.</string>
     <string name="account_number_validate_fail_message">Please enter all 12-digit account numbers.</string>
 
-
-    <string name="next">Next</string>
-    <string name="back">Back</string>
-    <string name="back2"><![CDATA[<]]></string>
+    <!-- Result Screen Message -->
     <string name="server_failure_title">Error Occurred</string>
     <string name="server_failure_description">An unexpected error occurred temporarily. Please try again in a little while.</string>
     <string name="ineligible_title">Customer is not eligible</string>
@@ -32,10 +29,15 @@
     <string name="eligible_title">Congraturations!</string>
     <string name="eligible_description_1">You have been selected as the target for this event.</string>
     <string name="eligible_description_2">will be given as a reward. Please continue to love us.</string>
-    <string name="back_to_first_page">Back to first page</string>
-    <string name="exit">Exit</string>
     <string name="invalid_number_title">Invalid Account Number</string>
     <string name="invalid_number_description">Please check and enter again.</string>
+
+    <!-- UI Strings -->
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="back2"><![CDATA[<]]></string>
+    <string name="exit">Exit</string>
     <string name="home">Home</string>
     <string name="result_image_contentdescription">reward result guidance image</string>
+    <string name="top_logo_description">sky rewards app logo</string>
 </resources>

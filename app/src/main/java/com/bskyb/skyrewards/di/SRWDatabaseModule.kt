@@ -30,7 +30,6 @@ class SRWDatabaseModule {
         ).build()
     }
 
-
     @Provides
     @Singleton
     fun provideMoshi(): Moshi {
