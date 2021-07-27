@@ -44,9 +44,9 @@ Language : **Kotlin**
 ### Easily extensible design
 1. Separation of client-server logic by making the backend logic independent as a bound service part to be similar to reality
 2. By simulating actual client to server communication, the information input by the user and the reward information sent by the server are all encapsulated in a data class and designed to communicate in a byte array. It is designed not to change the communication protocol even if the structure changes.
-3. The settings set by the company (channels, rewards, service error output, etc.) are all managed in one location (constants directory or package in the project) affecting the entire project.  
+3. The settings set by the company (channels, rewards, service error output, etc.) are all managed in one location (constants directory or package in the project) affecting the entire project.      
 ### Object-oriented and test-aware design
-1. In the RewardsService and Eligible Service, which are the core algorithms of the service, the service stage and the actual logic part are separated and designed to increase the test efficiency.  
+1. In the RewardsService and Eligible Service, which are the core algorithms of the service, the service stage and the actual logic part are separated and designed to increase the test efficiency.      
 ### Points that are close to the actual service
 1. It has a beautiful and practical UX design that looks like using Sky's real app.
 2. By applying scrolling to each screen, you can see the entire content even on a small screen.
@@ -56,44 +56,45 @@ Language : **Kotlin**
 
 ## Test Cases and Results (Unit Test through JUnit4)
 1. Testing for user input
-> Input : `Customer_who_subscribed_sports_channel_and_have_valid_account_number`
+
+> Input : `Customer_who_subscribed_sports_channel_and_have_valid_account_number`  
 > Result : **Pass**  
-  
-> Input : `Customer_who_subscribed_sports_channel_and_have_invalid_account_number`
+    
+> Input : `Customer_who_subscribed_sports_channel_and_have_invalid_account_number`  
 > Result : **Pass**
-  
+      
 > Input : `Customer_who_subscribed_kids_channel_and_have_valid_account_number`
 > Result : **Pass**
-  
+      
 > Input : `Customer_who_subscribed_kids_channel_and_have_invalid_account_number`
 > Result : **Pass**
-  
+      
 > Input : `Customer_who_subscribed_music_channel_and_have_valid_account_number`
 > Result : **Pass**
-  
+      
 > Input : `Customer_who_subscribed_music_channel_and_have_invalid_account_number`
 > Result : **Pass**
-  
+      
 > Input : `Customer_who_subscribed_news_channel_and_have_valid_account_number`
 > Result : **Pass**
-  
+      
 > Input : `Customer_who_subscribed_news_channel_and_have_invalid_account_number`
 > Result : **Pass**
-  
+      
 > Input : `Customer_who_subscribed_movie_channel_and_have_valid_account_number`
 > Result : **Pass**
-  
+      
 > Input : `Customer_who_subscribed_movie_channel_and_have_invalid_account_number`
 > Result : **Pass**
-  
+      
 2. Testing for Room Database and ViewModel
-  
+      
 > Input : Customer Data
 > Result : **Pass**
-  
+      
 > Input : Rewards Result
 > Result : **Pass**
-  
+      
 Total : 12 cases 
 Pass: 12 cases
 Fail : 0 cases
