@@ -110,7 +110,10 @@ https://trello.com/b/liirAZJZ/sky-rewards
 > Input : Rewards Result  
 > Result : **Pass**
       
-Total : 12 cases 
-Pass: 12 cases
-Fail : 0 cases
+**Total** : 12 cases  
+**Pass**: 12 cases  
+**Fail** : 0 cases  
   
+## Copyright
+
+All images and resources used in the project were personal or commercially licensed.
