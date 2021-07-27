@@ -1,6 +1,5 @@
 package com.bskyb.skyrewards.service.util
 
-import android.util.Log
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.SRWApplication
 import com.bskyb.skyrewards.data.enums.SRWChannelType
@@ -38,21 +37,21 @@ object SRWEngineUtil {
                     timestamp = System.currentTimeMillis(),
                     messageTitle = SRWApplication.instance.getString(R.string.server_failure_title),
                     messageDescription = SRWApplication.instance.getString(R.string.server_failure_description),
-                    imageUrl = R.drawable.exclamination_mark
+                    imageUrl = R.drawable.img_exclamination_mark
                 )
                 SRWServiceResult.CUSTOMER_INELIGIBLE.resultCode -> SRWRewardResult(
                     resultCode = resultCode,
                     timestamp = System.currentTimeMillis(),
                     messageTitle = SRWApplication.instance.getString(R.string.ineligible_title),
                     messageDescription = SRWApplication.instance.getString(R.string.ineligible_description),
-                    imageUrl = R.drawable.sad_person
+                    imageUrl = R.drawable.img_sad_person
                 )
                 SRWServiceResult.INVALID_ACCOUNT_NUMBER_ERROR.resultCode -> SRWRewardResult(
                     resultCode = resultCode,
                     timestamp = System.currentTimeMillis(),
                     messageTitle = SRWApplication.instance.getString(R.string.invalid_number_title),
                     messageDescription = SRWApplication.instance.getString(R.string.invalid_number_description),
-                    imageUrl = R.drawable.exclamination_mark
+                    imageUrl = R.drawable.img_exclamination_mark
                 )
                 else -> SRWRewardResult()
             }
@@ -64,15 +63,15 @@ object SRWEngineUtil {
         var prize = ""
         when (customerData.channelId) {
             SRWChannelType.MOVIE.channelId -> {
-                imageUrl = R.drawable.pirates_of_caribbean
+                imageUrl = R.drawable.img_pirates_of_caribbean
                 prize = SRWRewardType.PIRATES_OF_THE_CARIBBEAN_COLLECTION.title
             }
             SRWChannelType.SPORTS.channelId -> {
-                imageUrl = R.drawable.champions_league
+                imageUrl = R.drawable.img_champions_league
                 prize = SRWRewardType.CHAMPIONS_LEAGUE_FINAL_TICKET.title
             }
             SRWChannelType.MUSIC.channelId -> {
-                imageUrl = R.drawable.microphone
+                imageUrl = R.drawable.img_microphone
                 prize = SRWRewardType.KARAOKE_PRO_MICROPHONE.title
             }
         }

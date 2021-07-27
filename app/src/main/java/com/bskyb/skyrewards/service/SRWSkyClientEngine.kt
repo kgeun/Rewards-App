@@ -4,7 +4,6 @@ import android.content.Context
 import android.widget.Toast
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.SRWApplication
-import com.bskyb.skyrewards.data.enums.SRWRewardType
 import com.bskyb.skyrewards.data.enums.SRWServiceResult
 import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.data.model.SRWRewardResult
@@ -41,7 +40,7 @@ class SRWSkyClientEngine(val customerData: SRWCustomerData, val context: Context
             timestamp = System.currentTimeMillis(),
             messageTitle = SRWApplication.instance.getString(R.string.server_failure_title),
             messageDescription = SRWApplication.instance.getString(R.string.server_failure_description),
-            imageUrl = R.drawable.exclamination_mark
+            imageUrl = R.drawable.img_exclamination_mark
         )
     }
 
