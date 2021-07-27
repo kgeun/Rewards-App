@@ -18,24 +18,24 @@ Sky Rewards is an Android native app that tells customers who have been using Sk
 3. You can proceed according to the steps instructed by the app. Here are the expected result values based on the value you enter:  
 
 Channel | Account Number Validity | Result
------------- | --------------------- | ----------
+------------ | --------------------- | ---------------------------
 Sky Sports | Valid | Get Reward (Champions League Final Ticket)
 Sky Sports | Invalid | Invalid Account Number
------------- | --------------------------- | ----------
+------------ | --------------------------- | ---------------------------
 Sky Kids | Valid | Ineligible
 Sky Kids | Invalid | Ineligible
------------- | --------------------------- | ----------
+------------ | --------------------------- | ---------------------------
 Sky Music | Valid | Get Reward (Karaoke Pro Microphone)
 Sky Music | Invalid | Invalid Account Number
------------- | --------------------------- | ----------
+------------ | --------------------------- | ---------------------------
 Sky News | Valid | Ineligible
 Sky News | Invalid | Ineligible
------------- | --------------------------- | ----------
+------------ | --------------------------- | ---------------------------
 Sky Music | Valid | Get Reward (Pirates of Caribbean Collection)
 Sky Music | Invalid | Invalid Account Number
    
-**Valid Account Number Criteri**  
-If the first four digits are all the same, it is judged to be Valid    
+### Valid Account Number Criteri
+**If the first four digits are all the same, it is judged to be Valid**  
 
 
 ## Source Repository
