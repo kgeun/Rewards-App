@@ -54,7 +54,7 @@
                     android:id="@+id/rewardImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/present_bg1"
+                    android:src="@drawable/img_present"
                     android:adjustViewBounds="true"
                     android:layout_marginHorizontal="12dp"
                     android:layout_marginTop="20dp"
@@ -112,20 +112,20 @@
             android:layout_height="20dp"
             app:layout_constraintTop_toTopOf="@id/rewardContentScroll"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/gradient_bg_reverse"/>
+            android:background="@drawable/rcs_white_gradient_1_reverse"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@drawable/gradient_bg"/>
+            android:background="@drawable/rcs_white_gradient_1"/>
 
         <TextView
             android:id="@+id/nextBtnText"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:text="@string/next"
-            android:background="@drawable/btn_bg_1"
+            android:background="@drawable/rcs_button_background_1"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="18dp"

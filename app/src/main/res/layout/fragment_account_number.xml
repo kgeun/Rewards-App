@@ -67,7 +67,7 @@
             android:inputType="number"
             android:maxLength="12"
             android:imeOptions="actionDone"
-            android:background="@drawable/account_edittext_bg"/>
+            android:background="@drawable/rcs_white_solidgrey0"/>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/buttonLayout"
@@ -83,7 +83,7 @@
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:text="@string/back2"
-                android:background="@drawable/btn_bg_2"
+                android:background="@drawable/rcs_button_background_2"
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:textColor="@android:color/white"
@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:text="@string/next"
-                android:background="@drawable/btn_bg_1"
+                android:background="@drawable/rcs_button_background_1"
                 android:layout_gravity="bottom"
                 android:gravity="center"
                 android:textColor="@android:color/white"

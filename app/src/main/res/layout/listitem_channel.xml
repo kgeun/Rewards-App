@@ -46,7 +46,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/channel_thumbnail_gradient" />
+                    android:background="@drawable/rcs_black_gradient_1" />
 
                 <TextView
                     android:id="@+id/channelTitle"
