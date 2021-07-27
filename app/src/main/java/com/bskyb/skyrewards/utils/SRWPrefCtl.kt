@@ -7,8 +7,6 @@ import com.bskyb.skyrewards.SRWApplication
 object SRWPrefCtl {
     private const val PREF_NAME = "SKY_REWARDS_PREF"
 
-    private const val PREF_MY_CHANNEL_ID = "Pref_MyChannelId"
-
     private val pref: SharedPreferences =
         SRWApplication.instance.applicationContext.getSharedPreferences(
             PREF_NAME,
@@ -43,15 +41,6 @@ object SRWPrefCtl {
         }
     }
 
-    fun setMyChannelId(value: Int) {
-        set(PREF_MY_CHANNEL_ID, value)
-    }
-
-    fun getMyChannelId(): Int? {
-        return get(PREF_MY_CHANNEL_ID, 0)
-    }
-
     fun deleteAll() {
-        setMyChannelId(0)
     }
 }
