@@ -71,7 +71,7 @@ class SRWStartFragment : SRWBaseFragment() {
 
     private fun setAnim() {
         Handler(Looper.getMainLooper()).postDelayed({
-            binding.rewardContentScroll.startAnimation(
+            binding.startContentScroll.startAnimation(
                 SRWAnimationUtils.getAnim500(
                     R.anim.translate_fade_in,
                     requireContext()

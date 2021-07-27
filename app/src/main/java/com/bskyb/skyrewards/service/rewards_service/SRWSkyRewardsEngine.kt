@@ -1,7 +1,6 @@
 package com.bskyb.skyrewards.service.rewards_service
 
 import com.bskyb.skyrewards.constants.SRWConstants
-import com.bskyb.skyrewards.constants.enums.SRWChannelType
 import com.bskyb.skyrewards.constants.enums.SRWServiceResult
 import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.service.SRWSkyEngine
@@ -39,6 +38,6 @@ class SRWSkyRewardsEngine(private val rawData: ByteArray) : SRWSkyEngine {
     }
 
     private fun checkRewardChannel(customerData: SRWCustomerData): Boolean {
-        return SRWConstants.channelsToRewards.keys.contains(customerData.channelId)
+        return SRWConstants.channelsToRewardsMap.keys.contains(customerData.channelId)
     }
 }

@@ -27,21 +27,18 @@ object SRWEngineUtil {
     }
 
     fun makeByteArrayWithNegativeResultCode(resultCode: Int): ByteArray {
-        val resultObject =
-            when (resultCode) {
-                SRWServiceResult.RESULTS_SERVICE_FAILURE.resultCode
-                -> SRWNegativeResultCase.getResultsServiceFailureCase()
-                SRWServiceResult.ELIGIBILITY_SERVICE_FAILURE.resultCode
-                -> SRWNegativeResultCase.getEligibilityServiceFailureCase()
-                SRWServiceResult.CUSTOMER_INELIGIBLE.resultCode
-                -> SRWNegativeResultCase.getCustomerInEligibleCase()
-                SRWServiceResult.INVALID_ACCOUNT_NUMBER_ERROR.resultCode
-                -> SRWNegativeResultCase.getInvalidAccountNumberCase()
-                else
-                -> SRWRewardResult()
-            }
+        val resultObject = makeNegativeRewardResult(resultCode)
         return rewardResultToJson(resultObject).encodeToByteArray()
     }
+
+    fun makeNegativeRewardResult(resultCode: Int)
+        = SRWRewardResult (
+            resultCode = resultCode,
+            timestamp = System.currentTimeMillis(),
+            messageTitle = SRWConstants.serviceResultMap[resultCode]?.title,
+            messageDescription = SRWConstants.serviceResultMap[resultCode]?.message,
+            imageUrl = SRWConstants.serviceResultMap[resultCode]?.imageUrl
+        )
 
     fun makeByteArrayWithEligibleCustomer(customerData: SRWCustomerData): ByteArray =
         rewardResultToJson(makeResultEligibleCustomer(customerData)).encodeToByteArray()
@@ -51,14 +48,14 @@ object SRWEngineUtil {
         timestamp: Boolean = true
     ): SRWRewardResult {
         try {
-            val reward = SRWConstants.channelsToRewards[customerData.channelId]!!
+            val reward = SRWConstants.channelsToRewardsMap[customerData.channelId]!!
             val messageDescription: String =
                 SRWApplication.instance.getString(R.string.eligible_description_1) + " " +
                         reward.title + " " + SRWApplication.instance.getString(R.string.eligible_description_2)
 
             return SRWRewardResult(
                 resultCode = SRWServiceResult.CUSTOMER_ELIGIBLE.resultCode,
-                timestamp = if (timestamp) System.currentTimeMillis() else 0,
+                timestamp = System.currentTimeMillis(),
                 messageTitle = SRWApplication.instance.getString(R.string.eligible_title),
                 messageDescription = messageDescription,
                 imageUrl = reward.rewardImgUrl
@@ -66,7 +63,7 @@ object SRWEngineUtil {
         } catch (e: Exception) {
             // If an invalid channel ID is entered
             e.printStackTrace()
-            return SRWNegativeResultCase.getResultsServiceFailureCase()
+            return makeNegativeRewardResult(SRWServiceResult.RESULTS_SERVICE_FAILURE.resultCode)
         }
     }
 
