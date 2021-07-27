@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DatabaseModule {
+class SRWDatabaseModule {
     @Provides
     @Singleton
     fun provideMainDao(appDatabase: SRWAppDatabase): SRWMainDao = appDatabase.SRWMainDao()
@@ -29,6 +29,7 @@ class DatabaseModule {
             "skyrewards.db"
         ).build()
     }
+
 
     @Provides
     @Singleton

@@ -4,7 +4,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 
-object ViewBinding {
+object SRWViewBinding {
     @JvmStatic
     @BindingAdapter("setDrawableId")
     fun loadImageDrawable(view: ImageView, drawableId: Int) {

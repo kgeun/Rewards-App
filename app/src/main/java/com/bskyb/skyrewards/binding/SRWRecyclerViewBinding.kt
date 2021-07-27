@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import androidx.recyclerview.widget.RecyclerView
 
 
-object RecyclerViewBinding {
+object SRWRecyclerViewBinding {
     @JvmStatic
     @BindingAdapter("adapter")
     fun bindAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
