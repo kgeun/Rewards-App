@@ -43,7 +43,7 @@ https://bitbucket.org/freebuds/sky-rewards/src/master/
 ## Project Kanban Board
 https://trello.com/b/liirAZJZ/sky-rewards  
 ## Firebase Console
-<img width="800" src="https://user-images.githubusercontent.com/7823937/127239585-0d3f6a27-5b5e-48d9-95f7-d01b3efd2303.png">  
+![Firebase Screenshot](https://user-images.githubusercontent.com/7823937/127239585-0d3f6a27-5b5e-48d9-95f7-d01b3efd2303.png)  
 https://console.firebase.google.com/  
 You can check the statistics on the app through Firebase. I delivered the account that I can check separately.    
 
