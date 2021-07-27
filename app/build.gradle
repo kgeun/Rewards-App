@@ -1,19 +1,16 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'kotlin-parcelize'
-    id 'com.google.gms.google-services'
-    id 'com.google.firebase.crashlytics'
-    id 'com.google.firebase.firebase-perf'
-    id 'androidx.navigation.safeargs.kotlin'
-    id 'dagger.hilt.android.plugin'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-
     defaultConfig {
         applicationId "com.bskyb.skyrewards"
         minSdkVersion 23
@@ -22,24 +19,16 @@ android {
         versionName "1.0"
         testApplicationId "com.bskyb.skyrewards.test"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += [
-                        "room.schemaLocation":"$projectDir/schemas".toString(),
-                        "room.incremental":"true",
-                        "room.expandProjection":"true"]
-            }
-        }
     }
 
-    signingConfigs {
-        release {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+    signingConfigs{
+        releaseWithSignedKey {
+            storeFile file(SKYREWARDS_STORE_FILE)
+            storePassword SKYREWARDS_STORE_PASSWORD
+            keyAlias SKYREWARDS_KEY_ALIAS
+            keyPassword SKYREWARDS_KEY_PASSWORD
         }
-        debug {
+        debugWithDebugKey {
             storeFile file('debug.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
@@ -49,32 +38,29 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseWithSignedKey
             debuggable false
         }
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.debugWithDebugKey
             debuggable true
         }
         applicationVariants.all { variant ->
             appendVersionName(variant, defaultConfig)
         }
     }
-
     flavorDimensions "default"
     productFlavors {
         live {
             dimension "default"
-            signingConfig signingConfigs.findByName("release")
             manifestPlaceholders = [appLabel: "@string/app_name"]
         }
         qa {
             dimension "default"
-            signingConfig signingConfigs.findByName("debug")
             manifestPlaceholders = [appLabel: "@string/app_name_qa"]
             applicationIdSuffix '.qa'
         }
@@ -84,12 +70,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+
     buildFeatures {
-        dataBinding = true
-        viewBinding = true
+        dataBinding true
+        viewBinding true
     }
 }
 
@@ -102,6 +86,10 @@ def appendVersionName(variant, defaultConfig) {
 
         outputFileName = "SkyRewards_" + flavor + "_" + buildType + "_" + defaultConfig.versionName + "_" + defaultConfig.versionCode + "_" + buildDate + ".apk"
     }
+}
+
+kapt {
+    correctErrorTypes true
 }
 
 dependencies {
@@ -177,5 +165,4 @@ dependencies {
 
     // Espresso dependencies
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
 }
