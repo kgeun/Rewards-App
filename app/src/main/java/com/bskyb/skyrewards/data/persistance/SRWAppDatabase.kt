@@ -1,8 +1,6 @@
 package com.bskyb.skyrewards.data.persistance
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.data.model.SRWRewardResult

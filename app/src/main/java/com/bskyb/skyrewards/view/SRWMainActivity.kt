@@ -8,7 +8,6 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
-import com.bskyb.skyrewards.data.model.SRWRewardResult
 import com.bskyb.skyrewards.databinding.ActivityMainBinding
 import com.bskyb.skyrewards.service.rewards_service.SRWRewardsService
 import dagger.hilt.android.AndroidEntryPoint

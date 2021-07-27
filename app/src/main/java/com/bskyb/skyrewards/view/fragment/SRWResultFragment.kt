@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.R
@@ -13,8 +12,6 @@ import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.data.model.SRWRewardResult
 import com.bskyb.skyrewards.databinding.FragmentResultBinding
 import com.bskyb.skyrewards.view.SRWBaseFragment
-import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
 class SRWResultFragment: SRWBaseFragment() {
     private lateinit var binding: FragmentResultBinding
