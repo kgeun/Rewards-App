@@ -30,35 +30,24 @@ object SRWEngineUtil {
     fun makeByteArrayWithNegativeResultCode(resultCode: Int): ByteArray {
         val resultObject =
             when (resultCode) {
-                SRWServiceResult.RESULTS_SERVICE_FAILURE.resultCode,
+                SRWServiceResult.RESULTS_SERVICE_FAILURE.resultCode
+                        -> SRWNegativeResultCase.getResultsServiceFailureCase()
                 SRWServiceResult.ELIGIBILITY_SERVICE_FAILURE.resultCode
-                 -> SRWRewardResult(
-                    resultCode = resultCode,
-                    timestamp = System.currentTimeMillis(),
-                    messageTitle = SRWApplication.instance.getString(R.string.server_failure_title),
-                    messageDescription = SRWApplication.instance.getString(R.string.server_failure_description),
-                    imageUrl = R.drawable.img_exclamination_mark
-                )
-                SRWServiceResult.CUSTOMER_INELIGIBLE.resultCode -> SRWRewardResult(
-                    resultCode = resultCode,
-                    timestamp = System.currentTimeMillis(),
-                    messageTitle = SRWApplication.instance.getString(R.string.ineligible_title),
-                    messageDescription = SRWApplication.instance.getString(R.string.ineligible_description),
-                    imageUrl = R.drawable.img_sad_person
-                )
-                SRWServiceResult.INVALID_ACCOUNT_NUMBER_ERROR.resultCode -> SRWRewardResult(
-                    resultCode = resultCode,
-                    timestamp = System.currentTimeMillis(),
-                    messageTitle = SRWApplication.instance.getString(R.string.invalid_number_title),
-                    messageDescription = SRWApplication.instance.getString(R.string.invalid_number_description),
-                    imageUrl = R.drawable.img_exclamination_mark
-                )
-                else -> SRWRewardResult()
+                        -> SRWNegativeResultCase.getEligibilityServiceFailureCase()
+                SRWServiceResult.CUSTOMER_INELIGIBLE.resultCode
+                        -> SRWNegativeResultCase.getCustomerInEligibleCase()
+                SRWServiceResult.INVALID_ACCOUNT_NUMBER_ERROR.resultCode
+                        -> SRWNegativeResultCase.getInvalidAccountNumberCase()
+                else
+                        -> SRWRewardResult()
             }
         return rewardResultToJson(resultObject).encodeToByteArray()
     }
 
-    fun makeByteArrayWithEligibleCustomer(customerData: SRWCustomerData): ByteArray {
+    fun makeByteArrayWithEligibleCustomer(customerData: SRWCustomerData): ByteArray =
+        rewardResultToJson(makeResultEligibleCustomer(customerData)).encodeToByteArray()
+
+    fun makeResultEligibleCustomer(customerData: SRWCustomerData, timestamp: Boolean = true): SRWRewardResult {
         var imageUrl: Int = 0
         var prize = ""
         when (customerData.channelId) {
@@ -77,16 +66,15 @@ object SRWEngineUtil {
         }
 
         var messageDescription: String = SRWApplication.instance.getString(R.string.eligible_description_1) + " " +
-                                             prize + " " + SRWApplication.instance.getString(R.string.eligible_description_2)
+                prize + " " + SRWApplication.instance.getString(R.string.eligible_description_2)
 
-        val resultObject = SRWRewardResult(
+        return SRWRewardResult(
             resultCode = SRWServiceResult.CUSTOMER_ELIGIBLE.resultCode,
-            timestamp = System.currentTimeMillis(),
+            timestamp = if (timestamp) System.currentTimeMillis() else 0,
             messageTitle = SRWApplication.instance.getString(R.string.eligible_title),
             messageDescription = messageDescription,
             imageUrl = imageUrl
         )
-        return rewardResultToJson(resultObject).encodeToByteArray()
     }
 
     private fun rewardResultToJson(result: SRWRewardResult): String {

@@ -11,9 +11,9 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @JsonClass(generateAdapter = true)
 data class SRWRewardResult(
-    @field:Json(name = "resultCode") val resultCode: Int? = null,
-    @field:Json(name = "messageTitle") val messageTitle: String? = null,
-    @field:Json(name = "messageDescription") val messageDescription: String? = null,
-    @field:Json(name = "imageUrl") val imageUrl: Int? = 0,
-    @PrimaryKey @field:Json(name = "timestamp") val timestamp: Long? = 0
+    @field:Json(name = "resultCode") var resultCode: Int? = null,
+    @field:Json(name = "messageTitle") var messageTitle: String? = null,
+    @field:Json(name = "messageDescription") var messageDescription: String? = null,
+    @field:Json(name = "imageUrl") var imageUrl: Int? = 0,
+    @PrimaryKey @field:Json(name = "timestamp") var timestamp: Long? = 0
 ) : Parcelable
