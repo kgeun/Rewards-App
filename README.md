@@ -17,6 +17,10 @@ You can download APK file here : https://drive.google.com/drive/folders/1ChExbsm
 Please download and install the SkyRewards_live_release_1.0_1_20210727.apk file.
 You can proceed according to the steps instructed by the app. Here are the expected result values based on the value you enter:
 
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
 
 
 ## Source Repository
