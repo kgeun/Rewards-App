@@ -2,28 +2,44 @@ package com.bskyb.skyrewards.service.rewards_service
 
 import com.bskyb.skyrewards.data.enums.SRWChannelType
 import com.bskyb.skyrewards.data.enums.SRWServiceResult
+import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.service.SRWSkyEngine
 import com.bskyb.skyrewards.service.eligibility_service.SRWEligibilityService
-import com.bskyb.skyrewards.utils.SRWUtils
+import com.bskyb.skyrewards.service.util.SRWEngineUtil
+import com.squareup.moshi.JsonAdapter
 
-class SRWSkyRewardsEngine(val encodedAccountNumber: String, val myChannel: Int): SRWSkyEngine{
+import com.squareup.moshi.Moshi
+import java.lang.NullPointerException
 
-    override fun engineProcess(): Int {
-        // 1. 5% chance to determine server failure
-        if (SRWUtils.random100() < 7)
-            return SRWServiceResult.TECHNICAL_FAILURE_ERROR1.resultCode
 
-        // 2. If channel is news or kids it returns ineligible
-        if (myChannel == SRWChannelType.KIDS.channelId ||
-                myChannel == SRWChannelType.NEWS.channelId) {
-            return SRWServiceResult.CUSTOMER_INELIGIBLE.resultCode
+class SRWSkyRewardsEngine(private val rawData: ByteArray): SRWSkyEngine{
+
+    override fun engineProcess(): ByteArray {
+        try {
+            // 1. Before processing, parse raw data
+            val customerData: SRWCustomerData = SRWEngineUtil.parseToCustomerData(rawData) ?: throw NullPointerException()
+
+            // 2. If channel is news or kids it returns ineligible
+            if (checkNonRewardChannel(customerData)) {
+                return SRWEngineUtil
+                    .makeByteArrayWithNegativeResultCode(SRWServiceResult.CUSTOMER_INELIGIBLE.resultCode)
+            }
+
+            // 3. if Other channels, check EligibilityService alive and pass account number to EligibilityService
+            if (!SRWEligibilityService.Helper.isBounded)
+                return SRWEngineUtil
+                    .makeByteArrayWithNegativeResultCode(SRWServiceResult.ELIGIBILITY_SERVICE_FAILURE.resultCode)
+
+            val eligibilityService = SRWEligibilityService.Helper.srwService as SRWEligibilityService
+            return eligibilityService.serviceProcess(rawData)
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return SRWEngineUtil
+                .makeByteArrayWithNegativeResultCode(SRWServiceResult.RESULTS_SERVICE_FAILURE.resultCode)
         }
-
-        // 3. if Other channels, pass account number to EligibilityService
-        if (!SRWEligibilityService.Helper.isBounded)
-            return SRWServiceResult.TECHNICAL_FAILURE_ERROR2.resultCode
-
-        return (SRWEligibilityService.Helper.srwService as SRWEligibilityService).engineProcess(encodedAccountNumber)
-
     }
+
+    private fun checkNonRewardChannel(customerData: SRWCustomerData): Boolean =
+        customerData.channelId == SRWChannelType.KIDS.channelId || customerData.channelId == SRWChannelType.NEWS.channelId
 }

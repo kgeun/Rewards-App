@@ -1,5 +1,5 @@
 package com.bskyb.skyrewards.service
 
 interface SRWSkyEngine {
-    fun engineProcess(): Int
+    fun engineProcess(): ByteArray
 }

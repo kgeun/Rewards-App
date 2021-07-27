@@ -20,8 +20,8 @@ import java.util.*
 class SRWRewardsService: SRWService() {
     private val binder = LocalBinder()
 
-    override fun engineProcess(encodedAccountNumber: String, myChannel: Int): Int {
-        return SRWSkyRewardsEngine(encodedAccountNumber, myChannel).engineProcess()
+    override fun serviceProcess(rawData: ByteArray): ByteArray {
+        return SRWSkyRewardsEngine(rawData).engineProcess()
     }
 
     // Responsibility of the RewardsService to invoke and release the Eligibility

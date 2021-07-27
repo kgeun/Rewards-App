@@ -21,8 +21,8 @@ class SRWEligibilityService: SRWService() {
         return binder
     }
 
-    override fun engineProcess(encodedAccountNumber: String, myChannel: Int): Int {
-        return SRWSkyEligibilityEngine(encodedAccountNumber, myChannel).engineProcess()
+    override fun serviceProcess(rawData: ByteArray): ByteArray {
+        return SRWSkyEligibilityEngine(rawData).engineProcess()
     }
 
     inner class LocalBinder : Binder() {
