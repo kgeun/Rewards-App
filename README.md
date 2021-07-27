@@ -45,7 +45,7 @@ https://trello.com/b/liirAZJZ/sky-rewards
 ## Firebase Console
 ![Firebase Screenshot](https://user-images.githubusercontent.com/7823937/127239585-0d3f6a27-5b5e-48d9-95f7-d01b3efd2303.png)  
 https://console.firebase.google.com/  
-You can check the statistics on the app through Firebase. I delivered the account that I can check separately.    
+You can check the statistics on the app through Firebase. I delivered the account that can check separately.    
 
   
 ## Tech stacks
