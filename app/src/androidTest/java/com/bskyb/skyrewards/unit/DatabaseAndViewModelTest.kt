@@ -18,7 +18,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class DatabaseTest {
+class DatabaseAndViewModelTest {
     private val context = InstrumentationRegistry.getInstrumentation().targetContext
     private lateinit var mainDao: SRWMainDao
     private lateinit var mDatabase: SRWAppDatabase
