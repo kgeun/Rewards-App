@@ -33,6 +33,7 @@
             app:layout_constraintTop_toBottomOf="@id/statusbarView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="sky rewards app logo"
             android:layout_gravity="center_horizontal"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -54,8 +55,9 @@
             android:id="@+id/accountNumberEditText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:layout_marginHorizontal="29dp"
+            android:includeFontPadding="false"
             app:layout_constraintTop_toBottomOf="@id/accountDescriptionText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +69,7 @@
             android:inputType="number"
             android:maxLength="12"
             android:imeOptions="actionDone"
-            android:background="@drawable/rcs_white_solidgrey0"/>
+            android:background="@drawable/rcs_white_solidgrey3_background"/>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/buttonLayout"
@@ -89,8 +91,8 @@
                 android:textColor="@android:color/white"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                android:layout_marginLeft="34dp"
-                android:layout_marginRight="7dp" />
+                android:layout_marginStart="34dp"
+                android:layout_marginRight="10dp" />
 
             <TextView
                 android:id="@+id/nextBtnText"
@@ -104,7 +106,7 @@
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:layout_marginRight="34dp"
-                android:layout_marginLeft="7dp" />
+                android:layout_marginLeft="10dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

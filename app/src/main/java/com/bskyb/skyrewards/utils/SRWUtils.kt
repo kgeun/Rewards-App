@@ -13,7 +13,7 @@ object SRWUtils {
 
     fun hideKeyboard(activity: Activity?) {
         val imm: InputMethodManager = activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        var view = activity?.currentFocus
+        var view = activity.currentFocus
         if (view == null) {
             view = View(activity)
         }

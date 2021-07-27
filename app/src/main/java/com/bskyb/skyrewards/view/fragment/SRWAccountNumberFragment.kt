@@ -103,7 +103,7 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
         }
 
         binding.accountNumberEditText.setOnEditorActionListener { view, actionId, event ->
-            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+            if ((event != null && (event.keyCode == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                 SRWAnalytics.sendClick("KeyboardDoneBtn_${javaClass.simpleName}")
                 enterNumberFinished()
             }
