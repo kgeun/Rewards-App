@@ -1,10 +1,12 @@
-package com.bskyb.skyrewards.utils
+package com.bskyb.skyrewards.constants
 
-import com.bskyb.skyrewards.data.enums.SRWChannelType
+import com.bskyb.skyrewards.constants.enums.SRWChannelType
+import com.bskyb.skyrewards.constants.enums.SRWRewardType
 import com.bskyb.skyrewards.data.model.SRWChannel
 
 object SRWConstants {
     const val ANIM_DURATION: Long = 800
+
     val channelList = arrayOf(
         SRWChannel(
             SRWChannelType.SPORTS,
@@ -36,5 +38,11 @@ object SRWConstants {
             SRWChannelType.MOVIE.title,
             SRWChannelType.MOVIE.imageId
         )
+    )
+
+    val channelsToRewards = hashMapOf(
+        SRWChannelType.SPORTS.channelId to SRWRewardType.CHAMPIONS_LEAGUE_FINAL_TICKET,
+        SRWChannelType.MUSIC.channelId to SRWRewardType.KARAOKE_PRO_MICROPHONE,
+        SRWChannelType.MOVIE.channelId to SRWRewardType.PIRATES_OF_THE_CARIBBEAN_COLLECTION
     )
 }

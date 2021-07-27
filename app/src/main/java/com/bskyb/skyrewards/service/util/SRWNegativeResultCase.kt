@@ -2,7 +2,7 @@ package com.bskyb.skyrewards.service.util
 
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.SRWApplication
-import com.bskyb.skyrewards.data.enums.SRWServiceResult
+import com.bskyb.skyrewards.constants.enums.SRWServiceResult
 import com.bskyb.skyrewards.data.model.SRWRewardResult
 
 object SRWNegativeResultCase {

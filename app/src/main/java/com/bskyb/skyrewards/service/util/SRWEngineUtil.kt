@@ -2,9 +2,8 @@ package com.bskyb.skyrewards.service.util
 
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.SRWApplication
-import com.bskyb.skyrewards.data.enums.SRWChannelType
-import com.bskyb.skyrewards.data.enums.SRWRewardType
-import com.bskyb.skyrewards.data.enums.SRWServiceResult
+import com.bskyb.skyrewards.constants.SRWConstants
+import com.bskyb.skyrewards.constants.enums.SRWServiceResult
 import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.data.model.SRWRewardResult
 import com.squareup.moshi.JsonAdapter
@@ -51,34 +50,24 @@ object SRWEngineUtil {
         customerData: SRWCustomerData,
         timestamp: Boolean = true
     ): SRWRewardResult {
-        var imageUrl: Int = 0
-        var prize = ""
-        when (customerData.channelId) {
-            SRWChannelType.MOVIE.channelId -> {
-                imageUrl = R.drawable.img_pirates_of_caribbean
-                prize = SRWRewardType.PIRATES_OF_THE_CARIBBEAN_COLLECTION.title
-            }
-            SRWChannelType.SPORTS.channelId -> {
-                imageUrl = R.drawable.img_champions_league
-                prize = SRWRewardType.CHAMPIONS_LEAGUE_FINAL_TICKET.title
-            }
-            SRWChannelType.MUSIC.channelId -> {
-                imageUrl = R.drawable.img_microphone
-                prize = SRWRewardType.KARAOKE_PRO_MICROPHONE.title
-            }
+        try {
+            val reward = SRWConstants.channelsToRewards[customerData.channelId]!!
+            val messageDescription: String =
+                SRWApplication.instance.getString(R.string.eligible_description_1) + " " +
+                        reward.title + " " + SRWApplication.instance.getString(R.string.eligible_description_2)
+
+            return SRWRewardResult(
+                resultCode = SRWServiceResult.CUSTOMER_ELIGIBLE.resultCode,
+                timestamp = if (timestamp) System.currentTimeMillis() else 0,
+                messageTitle = SRWApplication.instance.getString(R.string.eligible_title),
+                messageDescription = messageDescription,
+                imageUrl = reward.rewardImgUrl
+            )
+        } catch (e: Exception) {
+            // If an invalid channel ID is entered
+            e.printStackTrace()
+            return SRWNegativeResultCase.getResultsServiceFailureCase()
         }
-
-        var messageDescription: String =
-            SRWApplication.instance.getString(R.string.eligible_description_1) + " " +
-                    prize + " " + SRWApplication.instance.getString(R.string.eligible_description_2)
-
-        return SRWRewardResult(
-            resultCode = SRWServiceResult.CUSTOMER_ELIGIBLE.resultCode,
-            timestamp = if (timestamp) System.currentTimeMillis() else 0,
-            messageTitle = SRWApplication.instance.getString(R.string.eligible_title),
-            messageDescription = messageDescription,
-            imageUrl = imageUrl
-        )
     }
 
     private fun rewardResultToJson(result: SRWRewardResult): String {

@@ -12,7 +12,7 @@ import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.data.persistance.SRWMainDao
 import com.bskyb.skyrewards.databinding.FragmentChannelBinding
-import com.bskyb.skyrewards.utils.SRWConstants
+import com.bskyb.skyrewards.constants.SRWConstants
 import com.bskyb.skyrewards.utils.SRWUtils
 import com.bskyb.skyrewards.view.SRWBaseFragment
 import com.bskyb.skyrewards.view.adapters.SRWChannelAdapter

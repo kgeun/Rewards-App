@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.SRWApplication
-import com.bskyb.skyrewards.data.enums.SRWServiceResult
+import com.bskyb.skyrewards.constants.enums.SRWServiceResult
 import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.data.model.SRWRewardResult
 import com.bskyb.skyrewards.service.rewards_service.SRWRewardsService

@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.data.enums
+package com.bskyb.skyrewards.constants.enums
 
 import com.bskyb.skyrewards.R
 

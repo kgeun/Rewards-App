@@ -1,6 +1,6 @@
 package com.bskyb.skyrewards.data.model
 
-import com.bskyb.skyrewards.data.enums.SRWChannelType
+import com.bskyb.skyrewards.constants.enums.SRWChannelType
 
 data class SRWChannel(
     val channelType: SRWChannelType? = null,

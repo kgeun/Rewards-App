@@ -3,6 +3,7 @@ package com.bskyb.skyrewards.utils
 import android.content.Context
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import com.bskyb.skyrewards.constants.SRWConstants
 
 object SRWAnimationUtils {
     fun getAnim400(animation: Int, context: Context): Animation {
