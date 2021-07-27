@@ -1,5 +1,6 @@
 package com.bskyb.skyrewards.service.eligibility_service
 
+import android.annotation.SuppressLint
 import android.app.Service
 import android.content.ComponentName
 import android.content.Context
@@ -13,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class SRWEligibilityService: SRWService() {
+class SRWEligibilityService : SRWService() {
     private val binder = LocalBinder()
 
     override fun onBind(intent: Intent): IBinder {
@@ -29,14 +30,15 @@ class SRWEligibilityService: SRWService() {
         fun getService(): SRWEligibilityService = this@SRWEligibilityService
     }
 
-    object Helper: SRWServiceHelper {
+    @SuppressLint("StaticFieldLeak")
+    object Helper : SRWServiceHelper {
         override lateinit var srwService: Service
         override lateinit var connection: ServiceConnection
         override var isBounded = false
 
         override fun bindService(context: Context) {
             // Defines callbacks for service binding, passed to bindService()
-            connection = object: ServiceConnection {
+            connection = object : ServiceConnection {
                 override fun onServiceConnected(className: ComponentName, service: IBinder) {
                     srwService = (service as LocalBinder).getService()
                     isBounded = true
@@ -47,7 +49,11 @@ class SRWEligibilityService: SRWService() {
                 }
             }
 
-            context.bindService(Intent(context, SRWEligibilityService::class.java), connection, Context.BIND_AUTO_CREATE)
+            context.bindService(
+                Intent(context, SRWEligibilityService::class.java),
+                connection,
+                Context.BIND_AUTO_CREATE
+            )
         }
 
         override fun stopService(context: Context) {

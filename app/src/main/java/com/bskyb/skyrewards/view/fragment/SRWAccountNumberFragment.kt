@@ -29,7 +29,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class SRWAccountNumberFragment : SRWBaseFragment() {
 
-    @Inject lateinit var mainDao: SRWMainDao
+    @Inject
+    lateinit var mainDao: SRWMainDao
     private lateinit var binding: FragmentAccountNumberBinding
     val mainViewModel: SRWMainViewModel by viewModels()
 
@@ -69,8 +70,8 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
 
         findNavController()
             .navigate(
-                SRWAccountNumberFragmentDirections.accountToResult(result)
-                ,navBuilder.build())
+                SRWAccountNumberFragmentDirections.accountToResult(result), navBuilder.build()
+            )
     }
 
     private fun startSkyEngine(customerData: SRWCustomerData) {

@@ -18,7 +18,11 @@ class SRWSkyClientEngine(val customerData: SRWCustomerData, val context: Context
 
     fun getRewardResult(): SRWRewardResult? {
         return if (!checkRewardsServiceStatus()) {
-            Toast.makeText(context, R.string.rewards_service_offline_try_restart, Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                R.string.rewards_service_offline_try_restart,
+                Toast.LENGTH_SHORT
+            ).show()
             createRewardsServiceFailure()
         } else {
             val rewardsService = SRWRewardsService.Helper.srwService as SRWRewardsService

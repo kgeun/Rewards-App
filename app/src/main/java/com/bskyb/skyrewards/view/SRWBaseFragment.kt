@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bskyb.skyrewards.analytics.SRWAnalytics
 
-open class SRWBaseFragment: Fragment() {
+open class SRWBaseFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

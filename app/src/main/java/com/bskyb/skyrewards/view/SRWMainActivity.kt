@@ -13,7 +13,7 @@ import com.bskyb.skyrewards.service.rewards_service.SRWRewardsService
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-open class SRWMainActivity: AppCompatActivity() {
+open class SRWMainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private var statusbarHeight = 0
@@ -44,7 +44,8 @@ open class SRWMainActivity: AppCompatActivity() {
 
         // Setting transparent status bar
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
-            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            decorView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         } else {
             val wic = WindowInsetsControllerCompat(window, decorView)
             wic.isAppearanceLightStatusBars = true
@@ -58,7 +59,7 @@ open class SRWMainActivity: AppCompatActivity() {
             statusbarHeight = resources.getDimensionPixelSize(resourceId)
         }
 
-        val statusbarView : View?  = findViewById<View>(R.id.statusbarView)
+        val statusbarView: View? = findViewById<View>(R.id.statusbarView)
         statusbarView?.visibility = View.VISIBLE
         statusbarView?.layoutParams?.height = statusbarHeight
     }

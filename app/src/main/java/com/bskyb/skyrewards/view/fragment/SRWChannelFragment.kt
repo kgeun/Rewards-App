@@ -28,7 +28,8 @@ class SRWChannelFragment : SRWBaseFragment() {
 
     private lateinit var binding: FragmentChannelBinding
     val mainViewModel: SRWMainViewModel by viewModels()
-    @Inject lateinit var mainDao: SRWMainDao
+    @Inject
+    lateinit var mainDao: SRWMainDao
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +38,8 @@ class SRWChannelFragment : SRWBaseFragment() {
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentChannelBinding.inflate(inflater, container, false)
-        binding.adapter = SRWChannelAdapter (binding.root as ViewGroup, SRWConstants.channelList.toList())
+        binding.adapter =
+            SRWChannelAdapter(binding.root as ViewGroup, SRWConstants.channelList.toList())
         SRWUtils.hideKeyboard(activity)
         setBtnActions()
         return binding.root

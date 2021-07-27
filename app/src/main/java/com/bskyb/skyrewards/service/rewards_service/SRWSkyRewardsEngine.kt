@@ -7,13 +7,13 @@ import com.bskyb.skyrewards.service.SRWSkyEngine
 import com.bskyb.skyrewards.service.eligibility_service.SRWEligibilityService
 import com.bskyb.skyrewards.service.util.SRWEngineUtil
 
-
-class SRWSkyRewardsEngine(private val rawData: ByteArray): SRWSkyEngine{
+class SRWSkyRewardsEngine(private val rawData: ByteArray) : SRWSkyEngine {
 
     override fun engineProcess(): ByteArray {
         try {
             // 1. Before processing, parse raw data
-            val customerData: SRWCustomerData = SRWEngineUtil.parseToCustomerData(rawData) ?: throw NullPointerException()
+            val customerData: SRWCustomerData =
+                SRWEngineUtil.parseToCustomerData(rawData) ?: throw NullPointerException()
 
             // 2. If channel is news or kids it returns ineligible
             if (checkNonRewardChannel(customerData)) {
@@ -26,7 +26,8 @@ class SRWSkyRewardsEngine(private val rawData: ByteArray): SRWSkyEngine{
                 return SRWEngineUtil
                     .makeByteArrayWithNegativeResultCode(SRWServiceResult.ELIGIBILITY_SERVICE_FAILURE.resultCode)
 
-            val eligibilityService = SRWEligibilityService.Helper.srwService as SRWEligibilityService
+            val eligibilityService =
+                SRWEligibilityService.Helper.srwService as SRWEligibilityService
             return eligibilityService.serviceProcess(rawData)
 
         } catch (e: Exception) {

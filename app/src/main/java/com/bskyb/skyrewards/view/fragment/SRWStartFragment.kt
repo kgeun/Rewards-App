@@ -26,10 +26,11 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class SRWStartFragment: SRWBaseFragment() {
+class SRWStartFragment : SRWBaseFragment() {
     private lateinit var binding: FragmentStartBinding
     val mainViewModel: SRWMainViewModel by viewModels()
-    @Inject lateinit var mainDao: SRWMainDao
+    @Inject
+    lateinit var mainDao: SRWMainDao
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +39,8 @@ class SRWStartFragment: SRWBaseFragment() {
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentStartBinding.inflate(inflater, container, false)
-        sharedElementEnterTransition = TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
+        sharedElementEnterTransition =
+            TransitionInflater.from(requireContext()).inflateTransition(android.R.transition.move)
 
         setListener()
         setAnim()
@@ -59,9 +61,8 @@ class SRWStartFragment: SRWBaseFragment() {
                 .setPopExitAnim(R.anim.fade_out)
 
             findNavController()
-                .navigate(R.id.start_to_channel
-                    ,null
-                    ,navBuilder.build()
+                .navigate(
+                    R.id.start_to_channel, null, navBuilder.build()
                 )
 
             SRWAnalytics.sendClick("NextBtn_${javaClass.simpleName}")
@@ -70,8 +71,18 @@ class SRWStartFragment: SRWBaseFragment() {
 
     private fun setAnim() {
         Handler(Looper.getMainLooper()).postDelayed({
-            binding.rewardContentScroll.startAnimation(SRWAnimationUtils.getAnim500(R.anim.translate_fade_in, requireContext()))
-            binding.nextBtnText.startAnimation(SRWAnimationUtils.getAnim500(android.R.anim.fade_in, requireContext()))
+            binding.rewardContentScroll.startAnimation(
+                SRWAnimationUtils.getAnim500(
+                    R.anim.translate_fade_in,
+                    requireContext()
+                )
+            )
+            binding.nextBtnText.startAnimation(
+                SRWAnimationUtils.getAnim500(
+                    android.R.anim.fade_in,
+                    requireContext()
+                )
+            )
         }, 500)
     }
 

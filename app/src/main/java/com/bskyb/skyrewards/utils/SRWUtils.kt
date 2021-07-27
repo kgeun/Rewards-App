@@ -10,7 +10,8 @@ import java.util.*
 object SRWUtils {
 
     fun hideKeyboard(activity: Activity?) {
-        val imm: InputMethodManager = activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm: InputMethodManager =
+            activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         var view = activity.currentFocus
         if (view == null) {
             view = View(activity)
@@ -18,7 +19,7 @@ object SRWUtils {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    fun sha256(input :String): String = Hashing.sha256()
+    fun sha256(input: String): String = Hashing.sha256()
         .hashString(input, StandardCharsets.UTF_8)
         .toString()
 

@@ -30,7 +30,12 @@ class SRWSplashFragment : SRWBaseFragment() {
 
     fun moveToStart() {
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.splash_to_start, null, null, FragmentNavigatorExtras(binding.introAppLogoImg to "app_logo"))
+            findNavController().navigate(
+                R.id.splash_to_start,
+                null,
+                null,
+                FragmentNavigatorExtras(binding.introAppLogoImg to "app_logo")
+            )
         }, 1000)
     }
 }

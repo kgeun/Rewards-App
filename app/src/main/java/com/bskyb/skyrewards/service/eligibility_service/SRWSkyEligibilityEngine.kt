@@ -5,7 +5,7 @@ import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.service.SRWSkyEngine
 import com.bskyb.skyrewards.service.util.SRWEngineUtil
 
-class SRWSkyEligibilityEngine(val rawData: ByteArray): SRWSkyEngine{
+class SRWSkyEligibilityEngine(val rawData: ByteArray) : SRWSkyEngine {
     override fun engineProcess(): ByteArray {
         try {
             // 1. Before processing, parse raw data
@@ -13,7 +13,10 @@ class SRWSkyEligibilityEngine(val rawData: ByteArray): SRWSkyEngine{
                 SRWEngineUtil.parseToCustomerData(rawData) ?: throw NullPointerException()
 
             // 2. Determining whether an account number is valid with its own algorithm
-            if (isEligibleAccountNumber(customerData.accountNumber ?: throw NullPointerException())) {
+            if (isEligibleAccountNumber(
+                    customerData.accountNumber ?: throw NullPointerException()
+                )
+            ) {
                 return SRWEngineUtil
                     .makeByteArrayWithEligibleCustomer(customerData)
             } else {

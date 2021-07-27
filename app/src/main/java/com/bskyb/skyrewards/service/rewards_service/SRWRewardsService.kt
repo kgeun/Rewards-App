@@ -1,5 +1,6 @@
 package com.bskyb.skyrewards.service.rewards_service
 
+import android.annotation.SuppressLint
 import android.app.Service
 import android.content.ComponentName
 import android.content.Context
@@ -16,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 @AndroidEntryPoint
-class SRWRewardsService: SRWService() {
+class SRWRewardsService : SRWService() {
     private val binder = LocalBinder()
 
     override fun serviceProcess(rawData: ByteArray): ByteArray {
@@ -38,27 +39,34 @@ class SRWRewardsService: SRWService() {
         fun getService(): SRWRewardsService = this@SRWRewardsService
     }
 
-    object Helper: SRWServiceHelper {
+    @SuppressLint("StaticFieldLeak")
+    object Helper : SRWServiceHelper {
         override lateinit var srwService: Service
         override lateinit var connection: ServiceConnection
         override var isBounded = false
 
         override fun bindService(context: Context) {
             // Defines callbacks for service binding, passed to bindService()
-            connection = object: ServiceConnection {
+            connection = object : ServiceConnection {
                 override fun onServiceConnected(className: ComponentName, service: IBinder) {
                     srwService = (service as LocalBinder).getService()
                     isBounded = true
-                    Toast.makeText(context, R.string.rewards_service_online, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.rewards_service_online, Toast.LENGTH_SHORT)
+                        .show()
                 }
 
                 override fun onServiceDisconnected(componentName: ComponentName) {
                     isBounded = false
-                    Toast.makeText(context, R.string.rewards_service_offline, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.rewards_service_offline, Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 
-            context.bindService(Intent(context, SRWRewardsService::class.java), connection, Context.BIND_AUTO_CREATE)
+            context.bindService(
+                Intent(context, SRWRewardsService::class.java),
+                connection,
+                Context.BIND_AUTO_CREATE
+            )
         }
 
         override fun stopService(context: Context) {

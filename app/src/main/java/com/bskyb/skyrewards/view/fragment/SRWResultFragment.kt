@@ -13,7 +13,7 @@ import com.bskyb.skyrewards.data.model.SRWRewardResult
 import com.bskyb.skyrewards.databinding.FragmentResultBinding
 import com.bskyb.skyrewards.view.SRWBaseFragment
 
-class SRWResultFragment: SRWBaseFragment() {
+class SRWResultFragment : SRWBaseFragment() {
     private lateinit var binding: FragmentResultBinding
 
     override fun onCreateView(
@@ -42,7 +42,8 @@ class SRWResultFragment: SRWBaseFragment() {
     }
 
     private fun bindData(binding: FragmentResultBinding) {
-        val result: SRWRewardResult = SRWAccountNumberFragmentArgs.fromBundle(requireArguments()).rewardResult
+        val result: SRWRewardResult =
+            SRWAccountNumberFragmentArgs.fromBundle(requireArguments()).rewardResult
         binding.rewardResult = result
     }
 

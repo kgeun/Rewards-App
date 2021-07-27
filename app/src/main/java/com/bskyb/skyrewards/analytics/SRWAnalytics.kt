@@ -5,7 +5,8 @@ import com.bskyb.skyrewards.SRWApplication
 import com.google.firebase.analytics.FirebaseAnalytics
 
 object SRWAnalytics {
-    private val firebaseAnalytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(SRWApplication.instance.applicationContext)
+    private val firebaseAnalytics: FirebaseAnalytics =
+        FirebaseAnalytics.getInstance(SRWApplication.instance.applicationContext)
 
     fun sendView(categoryCode: String) {
         try {

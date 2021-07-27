@@ -15,17 +15,18 @@ import com.bskyb.skyrewards.databinding.ListitemChannelBinding
 import com.bskyb.skyrewards.databinding.ListitemChannelHeaderBinding
 import com.bskyb.skyrewards.view.fragment.SRWChannelFragment
 
-class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWChannel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SRWChannelAdapter(val parentView: ViewGroup, val channelList: List<SRWChannel>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val HEADER = 0
     val CONTENT = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == HEADER) {
-            object: RecyclerView.ViewHolder(
+            object : RecyclerView.ViewHolder(
                 ListitemChannelHeaderBinding.inflate(
                     LayoutInflater.from(parentView.context), parentView, false
                 ).root
-            ){}
+            ) {}
         } else {
             ChannelHolder(
                 ListitemChannelBinding.inflate(
@@ -39,12 +40,12 @@ class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWCha
 
     override fun getItemViewType(position: Int): Int {
         return if (position == 0)
-                HEADER
-            else
-                CONTENT
+            HEADER
+        else
+            CONTENT
     }
 
-    inner class ChannelHolder (
+    inner class ChannelHolder(
         private val binding: ListitemChannelBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -57,7 +58,11 @@ class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWCha
                     moveToAccountWithAnim(root)
                     (binding.root.findFragment<SRWChannelFragment>()).insertChannel(item)
 
-                    Toast.makeText(binding.root.context, "${item.channelTitle} has been selected.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        binding.root.context,
+                        "${item.channelTitle} has been selected.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     SRWAnalytics.sendClick("ChannelBtn_${item.channelType}_${javaClass.simpleName}")
                 }
                 executePendingBindings()

@@ -31,15 +31,15 @@ object SRWEngineUtil {
         val resultObject =
             when (resultCode) {
                 SRWServiceResult.RESULTS_SERVICE_FAILURE.resultCode
-                        -> SRWNegativeResultCase.getResultsServiceFailureCase()
+                -> SRWNegativeResultCase.getResultsServiceFailureCase()
                 SRWServiceResult.ELIGIBILITY_SERVICE_FAILURE.resultCode
-                        -> SRWNegativeResultCase.getEligibilityServiceFailureCase()
+                -> SRWNegativeResultCase.getEligibilityServiceFailureCase()
                 SRWServiceResult.CUSTOMER_INELIGIBLE.resultCode
-                        -> SRWNegativeResultCase.getCustomerInEligibleCase()
+                -> SRWNegativeResultCase.getCustomerInEligibleCase()
                 SRWServiceResult.INVALID_ACCOUNT_NUMBER_ERROR.resultCode
-                        -> SRWNegativeResultCase.getInvalidAccountNumberCase()
+                -> SRWNegativeResultCase.getInvalidAccountNumberCase()
                 else
-                        -> SRWRewardResult()
+                -> SRWRewardResult()
             }
         return rewardResultToJson(resultObject).encodeToByteArray()
     }
@@ -47,7 +47,10 @@ object SRWEngineUtil {
     fun makeByteArrayWithEligibleCustomer(customerData: SRWCustomerData): ByteArray =
         rewardResultToJson(makeResultEligibleCustomer(customerData)).encodeToByteArray()
 
-    fun makeResultEligibleCustomer(customerData: SRWCustomerData, timestamp: Boolean = true): SRWRewardResult {
+    fun makeResultEligibleCustomer(
+        customerData: SRWCustomerData,
+        timestamp: Boolean = true
+    ): SRWRewardResult {
         var imageUrl: Int = 0
         var prize = ""
         when (customerData.channelId) {
@@ -65,8 +68,9 @@ object SRWEngineUtil {
             }
         }
 
-        var messageDescription: String = SRWApplication.instance.getString(R.string.eligible_description_1) + " " +
-                prize + " " + SRWApplication.instance.getString(R.string.eligible_description_2)
+        var messageDescription: String =
+            SRWApplication.instance.getString(R.string.eligible_description_1) + " " +
+                    prize + " " + SRWApplication.instance.getString(R.string.eligible_description_2)
 
         return SRWRewardResult(
             resultCode = SRWServiceResult.CUSTOMER_ELIGIBLE.resultCode,
