@@ -4,9 +4,7 @@ import android.app.Activity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.google.common.hash.Hashing
-import java.math.BigInteger
 import java.nio.charset.StandardCharsets
-import java.security.MessageDigest
 import java.util.*
 
 object SRWUtils {

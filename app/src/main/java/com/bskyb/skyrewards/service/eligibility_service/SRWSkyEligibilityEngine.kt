@@ -4,8 +4,6 @@ import com.bskyb.skyrewards.data.enums.SRWServiceResult
 import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.service.SRWSkyEngine
 import com.bskyb.skyrewards.service.util.SRWEngineUtil
-import com.bskyb.skyrewards.utils.SRWUtils
-import java.lang.NullPointerException
 
 class SRWSkyEligibilityEngine(val rawData: ByteArray): SRWSkyEngine{
     override fun engineProcess(): ByteArray {

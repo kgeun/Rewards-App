@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.R
+import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.data.model.SRWRewardResult
 import com.bskyb.skyrewards.databinding.FragmentResultBinding
 import com.bskyb.skyrewards.view.SRWBaseFragment
@@ -55,10 +56,12 @@ class SRWResultFragment: SRWBaseFragment() {
     private fun setListener() {
         binding.exitBtn.setOnClickListener {
             activity?.finish()
+            SRWAnalytics.sendClick("ExitBtn_${javaClass.simpleName}")
         }
 
         binding.homeBtn.setOnClickListener {
             goToFirstScreen()
+            SRWAnalytics.sendClick("HomeBtn_${javaClass.simpleName}")
         }
     }
 

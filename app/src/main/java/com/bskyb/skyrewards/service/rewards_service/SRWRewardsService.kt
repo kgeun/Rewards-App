@@ -9,10 +9,9 @@ import android.os.Binder
 import android.os.IBinder
 import android.widget.Toast
 import com.bskyb.skyrewards.R
-import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.service.SRWService
-import com.bskyb.skyrewards.service.eligibility_service.SRWEligibilityService
 import com.bskyb.skyrewards.service.SRWServiceHelper
+import com.bskyb.skyrewards.service.eligibility_service.SRWEligibilityService
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 

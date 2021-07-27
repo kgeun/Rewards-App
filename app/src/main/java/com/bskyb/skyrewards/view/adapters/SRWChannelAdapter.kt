@@ -1,6 +1,5 @@
 package com.bskyb.skyrewards.view.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,6 @@ import com.bskyb.skyrewards.analytics.SRWAnalytics
 import com.bskyb.skyrewards.data.model.SRWChannel
 import com.bskyb.skyrewards.databinding.ListitemChannelBinding
 import com.bskyb.skyrewards.databinding.ListitemChannelHeaderBinding
-import com.bskyb.skyrewards.utils.SRWPrefCtl
 import com.bskyb.skyrewards.view.fragment.SRWChannelFragment
 
 class SRWChannelAdapter (val parentView: ViewGroup, val channelList: List<SRWChannel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {

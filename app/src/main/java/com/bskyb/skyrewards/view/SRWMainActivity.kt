@@ -3,26 +3,15 @@ package com.bskyb.skyrewards.view
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
-import com.bskyb.skyrewards.data.enums.SRWServiceResult
 import com.bskyb.skyrewards.data.model.SRWRewardResult
-import com.bskyb.skyrewards.data.persistance.SRWMainDao
 import com.bskyb.skyrewards.databinding.ActivityMainBinding
 import com.bskyb.skyrewards.service.rewards_service.SRWRewardsService
-import com.bskyb.skyrewards.utils.SRWPrefCtl
-import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 @AndroidEntryPoint
 open class SRWMainActivity: AppCompatActivity() {

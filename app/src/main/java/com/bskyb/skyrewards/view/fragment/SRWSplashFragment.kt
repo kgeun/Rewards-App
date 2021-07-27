@@ -10,7 +10,6 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.databinding.FragmentSplashBinding
-import com.bskyb.skyrewards.service.eligibility_service.SRWEligibilityService
 import com.bskyb.skyrewards.view.SRWBaseFragment
 
 class SRWSplashFragment : SRWBaseFragment() {

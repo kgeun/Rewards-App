@@ -6,10 +6,6 @@ import com.bskyb.skyrewards.data.model.SRWCustomerData
 import com.bskyb.skyrewards.service.SRWSkyEngine
 import com.bskyb.skyrewards.service.eligibility_service.SRWEligibilityService
 import com.bskyb.skyrewards.service.util.SRWEngineUtil
-import com.squareup.moshi.JsonAdapter
-
-import com.squareup.moshi.Moshi
-import java.lang.NullPointerException
 
 
 class SRWSkyRewardsEngine(private val rawData: ByteArray): SRWSkyEngine{

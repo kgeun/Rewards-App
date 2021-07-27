@@ -15,11 +15,12 @@ import com.bskyb.skyrewards.databinding.FragmentChannelBinding
 import com.bskyb.skyrewards.utils.SRWConstants
 import com.bskyb.skyrewards.utils.SRWUtils
 import com.bskyb.skyrewards.view.SRWBaseFragment
-import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
 import com.bskyb.skyrewards.view.adapters.SRWChannelAdapter
-import com.google.type.DateTime
+import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @AndroidEntryPoint

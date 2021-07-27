@@ -1,14 +1,12 @@
 package com.bskyb.skyrewards.view.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavOptions
@@ -26,8 +24,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.Exception
-import java.lang.NullPointerException
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -127,7 +123,6 @@ class SRWAccountNumberFragment : SRWBaseFragment() {
             } else {
                 val customerData = mainViewModel.customerData.value
                 customerData?.accountNumber = accountNumberString
-                Log.i("kglee", "customerData?.accountNumber : " + customerData?.accountNumber)
                 insertCustomerData(customerData!!)
             }
         } catch (e: NullPointerException) {
