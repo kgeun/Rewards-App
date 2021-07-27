@@ -16,12 +16,8 @@ import com.bskyb.skyrewards.view.SRWBaseFragment
 import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
-@AndroidEntryPoint
 class SRWResultFragment: SRWBaseFragment() {
-
     private lateinit var binding: FragmentResultBinding
-    val mainViewModel: SRWMainViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

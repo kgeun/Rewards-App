@@ -19,10 +19,6 @@ open class SRWMainActivity: AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private var statusbarHeight = 0
 
-    companion object {
-        lateinit var result: SRWRewardResult
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

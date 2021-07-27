@@ -30,12 +30,6 @@ class DatabaseModule {
         ).build()
     }
 
-//    @Provides
-//    @Singleton
-//    fun provideAppDatabase(@ApplicationContext appContext: Context): SRWAppDatabase {
-//        return SRWAppDatabase.getInstance(appContext)
-//    }
-
     @Provides
     @Singleton
     fun provideMoshi(): Moshi {
