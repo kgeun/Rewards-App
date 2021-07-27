@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.servicelogic
+package com.bskyb.skyrewards.unit.servicelogic
 
 import com.bskyb.skyrewards.service.client.*
 import com.bskyb.skyrewards.service.util.*

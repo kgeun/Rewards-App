@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.servicelogic
+package com.bskyb.skyrewards.unit.servicelogic
 
 import com.bskyb.skyrewards.data.enums.SRWChannelType
 import com.bskyb.skyrewards.data.model.SRWCustomerData
