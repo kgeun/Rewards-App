@@ -116,4 +116,5 @@ https://trello.com/b/liirAZJZ/sky-rewards
   
 ## Copyright
 
-All images and resources used in the project were personal or commercially licensed.
+All images and resources used in the project were personal or commercially licensed.  
+Vector images were downloaded from freepik.com.  
