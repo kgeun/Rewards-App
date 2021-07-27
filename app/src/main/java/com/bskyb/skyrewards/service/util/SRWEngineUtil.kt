@@ -44,11 +44,10 @@ object SRWEngineUtil {
         rewardResultToJson(makeResultEligibleCustomer(customerData)).encodeToByteArray()
 
     fun makeResultEligibleCustomer(
-        customerData: SRWCustomerData,
-        timestamp: Boolean = true
+        customerData: SRWCustomerData
     ): SRWRewardResult {
         try {
-            val reward = SRWConstants.channelsToRewardsMap[customerData.channelId]!!
+            val reward = SRWConstants.eligibleChannelsToRewardsMap[customerData.channelId]!!
             val messageDescription: String =
                 SRWApplication.instance.getString(R.string.eligible_description_1) + " " +
                         reward.title + " " + SRWApplication.instance.getString(R.string.eligible_description_2)

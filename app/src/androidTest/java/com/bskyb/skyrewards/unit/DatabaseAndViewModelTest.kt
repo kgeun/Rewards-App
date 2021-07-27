@@ -33,6 +33,13 @@ class DatabaseTest {
         ).build()
         mainDao = mDatabase.SRWMainDao()
         mainViewModel = SRWMainViewModel(mainDao)
+
+        mainViewModel.viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                mainDao.truncateRewardResult()
+                mainDao.truncateCustomerData()
+            }
+        }
     }
 
     @Test
@@ -41,14 +48,13 @@ class DatabaseTest {
             val data = SRWCustomerData("111111111111", 3, 123123123)
             withContext(Dispatchers.IO) {
                 mainDao.insertCustomerData(data)
-
-                // Database Test (sync)
-                assertEquals(data, mainDao.getCustomerDataSync())
             }
 
-            // ViewModel Test (livedata)
+            // DB, ViewModel Test (livedata)
             mainDao.getCustomerData().observeOnce {
-                assertEquals(data, it)
+                if (it != null) {
+                    assertEquals(data, it)
+                }
             }
         }
     }
@@ -59,20 +65,19 @@ class DatabaseTest {
             val data = SRWRewardResult(1, "title", "description", 123, 123123)
             withContext(Dispatchers.IO) {
                 mainDao.insertRewardResult(data)
-
-                // Database Test (sync)
-                assertEquals(data, mainDao.getRewardResultSync())
             }
 
-            // ViewModel Test (livedata)
+            // DB, ViewModel Test (livedata)
             mainDao.getRewardResult().observeOnce {
-                assertEquals(data, it)
+                if (it != null) {
+                    assertEquals(data, it)
+                }
             }
         }
     }
 }
 
-class OneTimeObserver<T>(private val handler: (T) -> Unit) : Observer<T>, LifecycleOwner {
+class CustomObserver<T>(private val handler: (T?) -> Unit) : Observer<T>, LifecycleOwner {
     private val lifecycle = LifecycleRegistry(this)
     init {
         lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
@@ -82,11 +87,10 @@ class OneTimeObserver<T>(private val handler: (T) -> Unit) : Observer<T>, Lifecy
 
     override fun onChanged(t: T) {
         handler(t)
-        lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     }
 }
 
-fun <T> LiveData<T>.observeOnce(onChangeHandler: (T) -> Unit) {
-    val observer = OneTimeObserver(handler = onChangeHandler)
+fun <T> LiveData<T>.observeOnce(onChangeHandler: (T?) -> Unit) {
+    val observer = CustomObserver(handler = onChangeHandler)
     observe(observer, observer)
 }

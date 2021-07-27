@@ -9,7 +9,7 @@ import com.bskyb.skyrewards.data.model.SRWRewardResult
 object SRWConstants {
     const val ANIM_DURATION: Long = 800
 
-    val channelList = arrayOf(
+    val channelOrder = arrayOf(
         SRWChannel(
             SRWChannelType.SPORTS,
             SRWChannelType.SPORTS.channelId,
@@ -42,7 +42,7 @@ object SRWConstants {
         )
     )
 
-    val channelsToRewardsMap = hashMapOf(
+    val eligibleChannelsToRewardsMap = hashMapOf(
         SRWChannelType.SPORTS.channelId to SRWRewardType.CHAMPIONS_LEAGUE_FINAL_TICKET,
         SRWChannelType.MUSIC.channelId to SRWRewardType.KARAOKE_PRO_MICROPHONE,
         SRWChannelType.MOVIE.channelId to SRWRewardType.PIRATES_OF_THE_CARIBBEAN_COLLECTION

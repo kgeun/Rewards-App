@@ -27,7 +27,6 @@ class SRWSkyRewardsEngine(private val rawData: ByteArray) : SRWSkyEngine {
                     .makeByteArrayWithNegativeResultCode(SRWServiceResult.ELIGIBILITY_SERVICE_FAILURE.resultCode)
 
             val eligibilityService = SRWEligibilityService.Helper.srwService as SRWEligibilityService
-
             return eligibilityService.serviceProcess(rawData)
 
         } catch (e: Exception) {
@@ -38,6 +37,6 @@ class SRWSkyRewardsEngine(private val rawData: ByteArray) : SRWSkyEngine {
     }
 
     private fun checkRewardChannel(customerData: SRWCustomerData): Boolean {
-        return SRWConstants.channelsToRewardsMap.keys.contains(customerData.channelId)
+        return SRWConstants.eligibleChannelsToRewardsMap.keys.contains(customerData.channelId)
     }
 }

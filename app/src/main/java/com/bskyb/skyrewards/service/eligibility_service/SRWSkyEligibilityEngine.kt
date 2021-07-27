@@ -13,14 +13,14 @@ class SRWSkyEligibilityEngine(val rawData: ByteArray) : SRWSkyEngine {
                 SRWEngineUtil.parseToCustomerData(rawData) ?: throw NullPointerException()
 
             // 2. Determining whether an account number is valid with its own algorithm
-            if (isEligibleAccountNumber(
+            return if (isEligibleAccountNumber(
                     customerData.accountNumber ?: throw NullPointerException()
                 )
             ) {
-                return SRWEngineUtil
+                SRWEngineUtil
                     .makeByteArrayWithEligibleCustomer(customerData)
             } else {
-                return SRWEngineUtil
+                SRWEngineUtil
                     .makeByteArrayWithNegativeResultCode(SRWServiceResult.INVALID_ACCOUNT_NUMBER_ERROR.resultCode)
             }
         } catch (e: Exception) {

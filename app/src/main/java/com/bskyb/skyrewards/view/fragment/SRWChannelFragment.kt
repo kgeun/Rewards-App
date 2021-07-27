@@ -39,7 +39,7 @@ class SRWChannelFragment : SRWBaseFragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = FragmentChannelBinding.inflate(inflater, container, false)
         binding.adapter =
-            SRWChannelAdapter(binding.root as ViewGroup, SRWConstants.channelList.toList())
+            SRWChannelAdapter(binding.root as ViewGroup, SRWConstants.channelOrder.toList())
         SRWUtils.hideKeyboard(activity)
         setBtnActions()
         return binding.root
