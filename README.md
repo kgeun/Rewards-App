@@ -1,3 +1,4 @@
+![launcher_icon](https://user-images.githubusercontent.com/7823937/127241772-3d62fbe8-4844-4ee3-89e2-71bccca75555.png)
 # Sky Rewards
 
 Sky Take Home Assignment, Kyung Geun Lee  
@@ -63,7 +64,7 @@ You can check the statistics on the app through Firebase. I delivered the accoun
 ## Introduction to the project focus
 ### Easily extensible design
 1. Separation of client-server logic by making the backend logic independent as a bound service part to be similar to reality
-2. By simulating actual client to server communication, the information input by the user and the reward information sent by the server are all encapsulated in a data class and designed to communicate in a byte array. It is designed not to change the communication protocol even if the structure changes.
+2. By simulating actual client to server communication, the information input by the user and the reward information sent by the server are all encapsulated in a data class and designed to communicate in byte array. It is designed not to change the communication protocol even if the structure changes.
 3. The settings set by the company (channels, rewards, service error output, etc.) are all managed in one location (constants directory or package in the project) affecting the entire project.      
 ### Object-oriented and test-aware design
 1. In the RewardsService and Eligible Service, which are the core algorithms of the service, the service stage and the actual logic part are separated and designed to increase the test efficiency.      
@@ -71,7 +72,7 @@ You can check the statistics on the app through Firebase. I delivered the accoun
 1. It has a beautiful and practical UX design that looks like using Sky's real app.
 2. By applying scrolling to each screen, you can see the entire content even on a small screen.
 3. Separated the flavor for the test version and the live version, and created an app signing keystore file. (total 4 flavors : qaDebug, qaRelease, liveDebug, liveRelease)
-4. You can see the statistics used by actual users by applying the Firebase Crashes Library and each click and screenview indicator.
+4. You can see the statistics used by actual users by applying the Firebase. (crashes by Crashlytics, each click and screenview by Events)
 
 
 ## Test Cases and Results (Unit Test through JUnit4)
