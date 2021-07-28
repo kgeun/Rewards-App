@@ -57,7 +57,7 @@ You can check the statistics on the app through Firebase. I delivered the accoun
 - **Navigation Architecture Component** : Chosen to quickly construct multi-step screens and animation  
 - **Bound Services** : Selected to mock the backend server. I chose it because it was similar to the behavior of the backend in that it should always be simulated independently of the behavior of the client.  
 - **Glide** : Only local images were used, but selected for optimal image processing and scalability.  
-- **Moshi** : Apply json serialization library to mock communication with backend  
+- **Moshi** : Applied json serialization library to mock communication with backend  
 - **Firebase** : Firebase library has been applied to check application indicators such as Crashlytics and Event and for applying additional features in the future  
 
 
