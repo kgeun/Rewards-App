@@ -5,8 +5,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.bskyb.skyrewards.data.model.SRWCustomerData
-import com.bskyb.skyrewards.data.model.SRWRewardResult
+import com.bskyb.skyrewards.data.model.network.SRWCustomerData
+import com.bskyb.skyrewards.data.model.network.SRWRewardResult
 
 @Dao
 interface SRWMainDao {

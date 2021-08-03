@@ -4,8 +4,8 @@ import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.SRWApplication
 import com.bskyb.skyrewards.constants.SRWConstants
 import com.bskyb.skyrewards.constants.enums.SRWServiceResult
-import com.bskyb.skyrewards.data.model.SRWCustomerData
-import com.bskyb.skyrewards.data.model.SRWRewardResult
+import com.bskyb.skyrewards.data.model.network.SRWCustomerData
+import com.bskyb.skyrewards.data.model.network.SRWRewardResult
 import com.squareup.moshi.JsonAdapter
 
 import com.squareup.moshi.Moshi

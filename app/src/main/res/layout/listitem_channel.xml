@@ -6,7 +6,7 @@
     <data>
         <variable
             name="channel"
-            type="com.bskyb.skyrewards.data.model.SRWChannel" />
+            type="com.bskyb.skyrewards.data.model.ui.SRWChannel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

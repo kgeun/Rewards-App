@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.data.model
+package com.bskyb.skyrewards.data.model.ui
 
 import com.bskyb.skyrewards.constants.enums.SRWChannelType
 

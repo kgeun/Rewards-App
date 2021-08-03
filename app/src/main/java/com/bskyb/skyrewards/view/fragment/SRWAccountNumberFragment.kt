@@ -13,8 +13,8 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
-import com.bskyb.skyrewards.data.model.SRWCustomerData
-import com.bskyb.skyrewards.data.model.SRWRewardResult
+import com.bskyb.skyrewards.data.model.network.SRWCustomerData
+import com.bskyb.skyrewards.data.model.network.SRWRewardResult
 import com.bskyb.skyrewards.data.persistance.SRWMainDao
 import com.bskyb.skyrewards.databinding.FragmentAccountNumberBinding
 import com.bskyb.skyrewards.service.client.SRWSkyClientEngine

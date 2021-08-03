@@ -3,7 +3,7 @@ package com.bskyb.skyrewards.unit.servicelogic
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.SRWApplication
 import com.bskyb.skyrewards.constants.enums.SRWServiceResult
-import com.bskyb.skyrewards.data.model.SRWRewardResult
+import com.bskyb.skyrewards.data.model.network.SRWRewardResult
 
 object SRWNegativeResultCase {
 

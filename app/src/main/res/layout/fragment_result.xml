@@ -6,7 +6,7 @@
     <data>
         <variable
             name="rewardResult"
-            type="com.bskyb.skyrewards.data.model.SRWRewardResult" />
+            type="com.bskyb.skyrewards.data.model.network.SRWRewardResult" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

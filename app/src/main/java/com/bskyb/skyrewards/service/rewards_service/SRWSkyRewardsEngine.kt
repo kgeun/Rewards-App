@@ -2,7 +2,7 @@ package com.bskyb.skyrewards.service.rewards_service
 
 import com.bskyb.skyrewards.constants.SRWConstants
 import com.bskyb.skyrewards.constants.enums.SRWServiceResult
-import com.bskyb.skyrewards.data.model.SRWCustomerData
+import com.bskyb.skyrewards.data.model.network.SRWCustomerData
 import com.bskyb.skyrewards.service.SRWSkyEngine
 import com.bskyb.skyrewards.service.eligibility_service.SRWEligibilityService
 import com.bskyb.skyrewards.service.util.SRWEngineUtil

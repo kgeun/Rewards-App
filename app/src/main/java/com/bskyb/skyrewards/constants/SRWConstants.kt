@@ -3,8 +3,7 @@ package com.bskyb.skyrewards.constants
 import com.bskyb.skyrewards.constants.enums.SRWChannelType
 import com.bskyb.skyrewards.constants.enums.SRWRewardType
 import com.bskyb.skyrewards.constants.enums.SRWServiceResult
-import com.bskyb.skyrewards.data.model.SRWChannel
-import com.bskyb.skyrewards.data.model.SRWRewardResult
+import com.bskyb.skyrewards.data.model.ui.SRWChannel
 
 object SRWConstants {
     const val ANIM_DURATION: Long = 800

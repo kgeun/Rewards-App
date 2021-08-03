@@ -1,4 +1,4 @@
-package com.bskyb.skyrewards.data.model
+package com.bskyb.skyrewards.data.model.network
 
 import android.os.Parcelable
 import androidx.room.Entity

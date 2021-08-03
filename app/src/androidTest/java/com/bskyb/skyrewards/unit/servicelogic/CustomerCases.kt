@@ -1,7 +1,7 @@
 package com.bskyb.skyrewards.unit.servicelogic
 
 import com.bskyb.skyrewards.constants.enums.SRWChannelType
-import com.bskyb.skyrewards.data.model.SRWCustomerData
+import com.bskyb.skyrewards.data.model.network.SRWCustomerData
 
 object CustomerCases {
 

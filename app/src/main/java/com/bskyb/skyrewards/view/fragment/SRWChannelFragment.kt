@@ -8,8 +8,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.analytics.SRWAnalytics
-import com.bskyb.skyrewards.data.model.SRWChannel
-import com.bskyb.skyrewards.data.model.SRWCustomerData
+import com.bskyb.skyrewards.data.model.ui.SRWChannel
+import com.bskyb.skyrewards.data.model.network.SRWCustomerData
 import com.bskyb.skyrewards.data.persistance.SRWMainDao
 import com.bskyb.skyrewards.databinding.FragmentChannelBinding
 import com.bskyb.skyrewards.constants.SRWConstants

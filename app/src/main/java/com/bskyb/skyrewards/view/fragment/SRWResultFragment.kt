@@ -9,7 +9,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bskyb.skyrewards.R
 import com.bskyb.skyrewards.analytics.SRWAnalytics
-import com.bskyb.skyrewards.data.model.SRWRewardResult
+import com.bskyb.skyrewards.data.model.network.SRWRewardResult
 import com.bskyb.skyrewards.databinding.FragmentResultBinding
 import com.bskyb.skyrewards.view.SRWBaseFragment
 

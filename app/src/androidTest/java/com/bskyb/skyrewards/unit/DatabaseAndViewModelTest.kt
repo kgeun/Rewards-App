@@ -4,8 +4,8 @@ import androidx.lifecycle.*
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.bskyb.skyrewards.data.model.SRWCustomerData
-import com.bskyb.skyrewards.data.model.SRWRewardResult
+import com.bskyb.skyrewards.data.model.network.SRWCustomerData
+import com.bskyb.skyrewards.data.model.network.SRWRewardResult
 import com.bskyb.skyrewards.data.persistance.SRWAppDatabase
 import com.bskyb.skyrewards.data.persistance.SRWMainDao
 import com.bskyb.skyrewards.view.viewmodel.SRWMainViewModel
